@@ -1,0 +1,801 @@
+Dependencies for Project 'MiniFourAxisSource', Target 'MiniFourAxisSource': (DO NOT MODIFY !)
+F (..\Library\Device\Nuvoton\Mini58Series\Source\system_Mini58Series.c)(0x57034C05)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\system_mini58series.o --omf_browse .\obj\system_mini58series.crf --depend .\obj\system_mini58series.d)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Keil\def.h)(0x570F458F)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (..\Library\Device\Nuvoton\Mini58Series\Source\ARM\startup_Mini58Series.s)(0x55712E1E)(--cpu Cortex-M0 -g --16 --apcs=interwork --pd "__MICROLIB SETA 1"-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include--list .\lst\startup_mini58series.lst --xref -o .\obj\startup_mini58series.o --depend .\obj\startup_mini58series.d)
+F (..\Library\StdDriver\src\sys.c)(0x557149C0)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\sys.o --omf_browse .\obj\sys.crf --depend .\obj\sys.d)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (..\Library\StdDriver\src\uart.c)(0x55712E96)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\uart.o --omf_browse .\obj\uart.crf --depend .\obj\uart.d)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (..\Library\StdDriver\src\retarget.c)(0x55712E1E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\retarget.o --omf_browse .\obj\retarget.crf --depend .\obj\retarget.d)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (..\Library\StdDriver\src\adc.c)(0x557149C0)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\adc.o --omf_browse .\obj\adc.crf --depend .\obj\adc.d)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (..\Library\StdDriver\src\clk.c)(0x55712E96)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\clk.o --omf_browse .\obj\clk.crf --depend .\obj\clk.d)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (..\Library\StdDriver\src\fmc.c)(0x55712E96)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\fmc.o --omf_browse .\obj\fmc.crf --depend .\obj\fmc.d)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (..\Library\StdDriver\src\gpio.c)(0x55712E96)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\gpio.o --omf_browse .\obj\gpio.crf --depend .\obj\gpio.d)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (..\Library\StdDriver\src\i2c.c)(0x55712E96)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\i2c.o --omf_browse .\obj\i2c.crf --depend .\obj\i2c.d)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (..\Library\StdDriver\src\pwm.c)(0x557149C0)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\pwm.o --omf_browse .\obj\pwm.crf --depend .\obj\pwm.d)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (..\Library\StdDriver\src\spi.c)(0x55712E96)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\spi.o --omf_browse .\obj\spi.crf --depend .\obj\spi.d)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (..\Library\StdDriver\src\timer.c)(0x55712E1E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\timer.o --omf_browse .\obj\timer.crf --depend .\obj\timer.d)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (.\main.c)(0x571829C0)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (ConfigTable.h)(0x5707408A)
+I (led.h)(0x56F4A4DD)
+I (Timer_Ctrl.h)(0x5711EAF2)
+I (Motor.h)(0x5705C861)
+I (Battery.h)(0x570F45E1)
+I (UartCtrl.h)(0x57072624)
+I (FlashCtrl.h)(0x56ED013C)
+I (RC.h)(0x56DFDCFB)
+I (Control.h)(0x57088D00)
+I (PID.h)(0x5707510C)
+I (I2CDev.h)(0x56EA70A4)
+I (MPU6050.h)(0x56F1FAD9)
+I (d:\Keil5\ARM\ARMCC\include\stdbool.h)(0x52FDD27E)
+I (IMUSO3.h)(0x56F0C0CF)
+I (IMU.h)(0x5705C1CC)
+I (DMP.h)(0x56F20023)
+I (Comm.h)(0x57173E5D)
+I (.\XN297L\inc\RF.h)(0x57162402)
+I (FailSafe.h)(0x55B35EBD)
+I (Report.h)(0x570740C8)
+F (.\LED.c)(0x5704C042)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\led.o --omf_browse .\obj\led.crf --depend .\obj\led.d)
+I (LED.h)(0x56F4A4DD)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (Timer_Ctrl.h)(0x5711EAF2)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+F (.\Timer_Ctrl.c)(0x5711EB2E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\timer_ctrl.o --omf_browse .\obj\timer_ctrl.crf --depend .\obj\timer_ctrl.d)
+I (Timer_Ctrl.h)(0x5711EAF2)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (.\Motor.c)(0x5705C876)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\motor.o --omf_browse .\obj\motor.crf --depend .\obj\motor.d)
+I (Motor.h)(0x5705C861)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (def.h)(0x570F458F)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (Timer_Ctrl.h)(0x5711EAF2)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+F (.\Battery.c)(0x570F4F6C)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\battery.o --omf_browse .\obj\battery.crf --depend .\obj\battery.d)
+I (Battery.h)(0x570F45E1)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (def.h)(0x570F458F)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+F (.\UartCtrl.c)(0x571752DC)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\uartctrl.o --omf_browse .\obj\uartctrl.crf --depend .\obj\uartctrl.d)
+I (Def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (UartCtrl.h)(0x57072624)
+I (motor.h)(0x5705C861)
+I (PID.h)(0x5707510C)
+I (Report.h)(0x570740C8)
+I (ConfigTable.h)(0x5707408A)
+I (Control.h)(0x57088D00)
+F (.\FlashCtrl.c)(0x570382BB)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\flashctrl.o --omf_browse .\obj\flashctrl.crf --depend .\obj\flashctrl.d)
+I (FlashCtrl.h)(0x56ED013C)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (def.h)(0x570F458F)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+F (.\RC.c)(0x57034EF5)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\rc.o --omf_browse .\obj\rc.crf --depend .\obj\rc.d)
+I (RC.h)(0x56DFDCFB)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+F (.\FailSafe.c)(0x5711EB80)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\failsafe.o --omf_browse .\obj\failsafe.crf --depend .\obj\failsafe.d)
+I (FailSafe.h)(0x55B35EBD)
+I (IMU.h)(0x5705C1CC)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (d:\Keil5\ARM\ARMCC\include\math.h)(0x52FDD27E)
+I (motor.h)(0x5705C861)
+F (.\PID.c)(0x570B5195)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\pid.o --omf_browse .\obj\pid.crf --depend .\obj\pid.d)
+I (PID.h)(0x5707510C)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (def.h)(0x570F458F)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (UartCtrl.h)(0x57072624)
+I (d:\Keil5\ARM\ARMCC\include\stdlib.h)(0x52FDD27E)
+F (.\Control.c)(0x5711EB61)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\control.o --omf_browse .\obj\control.crf --depend .\obj\control.d)
+I (Control.h)(0x57088D00)
+I (ConfigTable.h)(0x5707408A)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (PID.h)(0x5707510C)
+I (Timer_Ctrl.h)(0x5711EAF2)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (RC.h)(0x56DFDCFB)
+I (motor.h)(0x5705C861)
+I (IMU.h)(0x5705C1CC)
+I (UartCtrl.h)(0x57072624)
+I (d:\Keil5\ARM\ARMCC\include\stdlib.h)(0x52FDD27E)
+F (.\ConfigTable.c)(0x570DB84A)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\configtable.o --omf_browse .\obj\configtable.crf --depend .\obj\configtable.d)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (ConfigTable.h)(0x5707408A)
+I (FlashCtrl.h)(0x56ED013C)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (PID.h)(0x5707510C)
+F (.\NVT_I2C.c)(0x57035610)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\nvt_i2c.o --omf_browse .\obj\nvt_i2c.crf --depend .\obj\nvt_i2c.d)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (NVT_I2C.h)(0x56EA70A4)
+F (.\filter.c)(0x56EF5A0F)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\filter.o --omf_browse .\obj\filter.crf --depend .\obj\filter.d)
+I (imu.h)(0x5705C1CC)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (filter.h)(0x56EF59FF)
+I (d:\Keil5\ARM\ARMCC\include\math.h)(0x52FDD27E)
+F (.\IMUSO3.c)(0x5711EB80)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\imuso3.o --omf_browse .\obj\imuso3.crf --depend .\obj\imuso3.d)
+I (IMUSO3.h)(0x56F0C0CF)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (Timer_Ctrl.h)(0x5711EAF2)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (IMU.h)(0x5705C1CC)
+I (d:\Keil5\ARM\ARMCC\include\math.h)(0x52FDD27E)
+F (.\IMU.c)(0x5711EB05)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\imu.o --omf_browse .\obj\imu.crf --depend .\obj\imu.d)
+I (IMU.h)(0x5705C1CC)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (def.h)(0x570F458F)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (MPU6050.h)(0x56F1FAD9)
+I (d:\Keil5\ARM\ARMCC\include\stdbool.h)(0x52FDD27E)
+I (filter.h)(0x56EF59FF)
+I (d:\Keil5\ARM\ARMCC\include\math.h)(0x52FDD27E)
+I (Timer_Ctrl.h)(0x5711EAF2)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+F (.\MPU6050.c)(0x5704CC42)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\mpu6050.o --omf_browse .\obj\mpu6050.crf --depend .\obj\mpu6050.d)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (d:\Keil5\ARM\ARMCC\include\stdlib.h)(0x52FDD27E)
+I (d:\Keil5\ARM\ARMCC\include\string.h)(0x52FDD27E)
+I (I2CDev.h)(0x56EA70A4)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (MPU6050.h)(0x56F1FAD9)
+I (d:\Keil5\ARM\ARMCC\include\stdbool.h)(0x52FDD27E)
+I (Timer_Ctrl.h)(0x5711EAF2)
+F (.\I2Cdev.c)(0x57034F0F)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\i2cdev.o --omf_browse .\obj\i2cdev.crf --depend .\obj\i2cdev.d)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (I2Cdev.h)(0x56EA70A4)
+I (nvt_i2c.h)(0x56EA70A4)
+F (.\DMP.c)(0x57034EF5)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\dmp.o --omf_browse .\obj\dmp.crf --depend .\obj\dmp.d)
+I (DMP.h)(0x56F20023)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (def.h)(0x570F458F)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (MPU6050.h)(0x56F1FAD9)
+I (d:\Keil5\ARM\ARMCC\include\stdbool.h)(0x52FDD27E)
+I (Timer_Ctrl.h)(0x5711EAF2)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (d:\Keil5\ARM\ARMCC\include\math.h)(0x52FDD27E)
+F (.\Comm.c)(0x57173E97)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\comm.o --omf_browse .\obj\comm.crf --depend .\obj\comm.d)
+I (Comm.h)(0x57173E5D)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (.\XN297L\inc\RF.h)(0x57162402)
+I (Timer_Ctrl.h)(0x5711EAF2)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+F (.\XN297L\src\RF.c)(0x57163C2E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\rf.o --omf_browse .\obj\rf.crf --depend .\obj\rf.d)
+I (.\XN297L\inc\RF.H)(0x57162402)
+I (..\Keil\def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (..\Keil\Timer_Ctrl.h)(0x5711EAF2)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+F (.\Report.c)(0x570B639E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\report.o --omf_browse .\obj\report.crf --depend .\obj\report.d)
+I (Report.h)(0x570740C8)
+I (def.h)(0x570F458F)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)
+I (..\Library\CMSIS\Include\core_cm0.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmInstr.h)(0x55712E1D)
+I (..\Library\CMSIS\Include\core_cmFunc.h)(0x55712E1D)
+I (..\Library\Device\Nuvoton\Mini58Series\Include\system_Mini58Series.h)(0x55712E96)
+I (..\Library\StdDriver\inc\sys.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\clk.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\acmp.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\adc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\fmc.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\gpio.h)(0x557942EE)
+I (..\Library\StdDriver\inc\i2c.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\pwm.h)(0x557147FC)
+I (..\Library\StdDriver\inc\spi.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
+I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
+I (UartCtrl.h)(0x57072624)
+I (ConfigTable.h)(0x5707408A)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (PID.h)(0x5707510C)
+I (Motor.h)(0x5705C861)
+I (imu.h)(0x5705C1CC)
+F (.\def.h)(0x570F458F)()
+F (.\led.h)(0x56F4A4DD)()
+F (.\Timer_Ctrl.h)(0x5711EAF2)()
+F (.\Motor.h)(0x5705C861)()
+F (.\Battery.h)(0x570F45E1)()
+F (.\UartCtrl.h)(0x57072624)()
+F (.\FlashCtrl.h)(0x56ED013C)()
+F (.\RC.h)(0x56DFDCFB)()
+F (.\FailSafe.h)(0x55B35EBD)()
+F (.\PID.h)(0x5707510C)()
+F (.\Control.h)(0x57088D00)()
+F (.\ConfigTable.h)(0x5707408A)()
+F (.\MPU6050.h)(0x56F1FAD9)()
+F (.\NVT_I2C.h)(0x56EA70A4)()
+F (.\I2CDev.h)(0x56EA70A4)()
+F (.\filter.h)(0x56EF59FF)()
+F (.\IMU.h)(0x5705C1CC)()
+F (.\IMUSO3.h)(0x56F0C0CF)()
+F (.\DMP.h)(0x56F20023)()
+F (.\Comm.h)(0x57173E5D)()
+F (.\XN297L\inc\RF.H)(0x57162402)()
+F (.\Report.h)(0x570740C8)()
