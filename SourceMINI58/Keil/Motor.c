@@ -4,9 +4,9 @@
 
 //飞机正方向，左下角为电机1，逆时钟以此类推，电机2，电机3，电机4
 #define MOTOR_1 0
-#define MOTOR_2 3
-#define MOTOR_3 1
-#define MOTOR_4 2
+#define MOTOR_2 1
+#define MOTOR_3 2
+#define MOTOR_4 3
 
 int16_t motor1PWM, motor2PWM, motor3PWM, motor4PWM; 
 
@@ -28,7 +28,7 @@ void Motor_Start(void)
 	
 	PWM_EnableOutput(PWM, 0x0f);
 	PWM_Start(PWM, 0x0f);
-	//MotorPwmOutput(15,15,15,15);
+	MotorPwmOutput(0,0,0,0);
 }
 
 void Motor_Stop(void)

@@ -146,7 +146,8 @@ void setup()
 
 	//初始化电机
 	Motor_Init();
-	//Motor_Start();
+	Motor_Start();
+	
 	//电机怠转
 	//MotorPwmOutput(20,20,20,20);
 	
@@ -182,21 +183,21 @@ void loop()
 			#endif
 			
 			//imu校准
-			if(imuCaliFlag)
-			{
-					if(IMU_Calibrate())
-					{
-						imuCaliFlag=0;
-						gParamsSaveEEPROMRequset=1;	//请求记录到EEPROM
-						imu.caliPass=1;
-						LED_OFF();
-					}
-			}
+//			if(imuCaliFlag)
+//			{
+//					if(IMU_Calibrate())
+//					{
+//						imuCaliFlag=0;
+//						gParamsSaveEEPROMRequset=1;	//请求记录到EEPROM
+//						imu.caliPass=1;
+//						LED_OFF();
+//					}
+//			}
 				
 			//PID二环角速度
 			CtrlAttiRate();
 			//控制电机
-			CtrlMotor();
+			//CtrlMotor();
 		}
 
 		if(GetFrameCount()%20 == 0)
@@ -223,7 +224,7 @@ void loop()
 		if(GetFrameCount()%100 == 0)
 		{
 			//飞控翻覆时，停止电机
-			 FailSafeCrash();
+			 //FailSafeCrash();
 			
 			//电池低电压处理
 			//printf("Convert result is %d\n", GetBatteryAD());
@@ -234,11 +235,11 @@ void loop()
 		//打印调试信息
 		if(GetFrameCount()%100 == 0)
 		{
-			//ReportMessage();
-			if(Comm_Data && Comm_Data[4]>0)
-			{
-				printf("Comm_Data%d,%d,%d,%d,%d\n",Comm_Data[0],Comm_Data[1],Comm_Data[2],Comm_Data[3],Comm_Data[4]);
-			}
+			ReportMessage();
+//			if(Comm_Data && Comm_Data[4]>0)
+//			{
+//				printf("Comm_Data%d,%d,%d,%d,%d\n",Comm_Data[0],Comm_Data[1],Comm_Data[2],Comm_Data[3],Comm_Data[4]);
+//			}
 		}
 		
 		

@@ -39,8 +39,8 @@ void ReadIMUSensorHandle(void)
 	uint8_t i;
 		//read raw
 		
-		MPU6050_getAcceleration(&imu.accADC[0], &imu.accADC[1], &imu.accADC[2]);
-		MPU6050_getRotation(&imu.gyroADC[0], &imu.gyroADC[1], &imu.gyroADC[2]);
+		MPU6050_getAcceleration(&imu.accADC[1], &imu.accADC[0], &imu.accADC[2]);
+		MPU6050_getRotation(&imu.gyroADC[1], &imu.gyroADC[0], &imu.gyroADC[2]);
 	
 		//turn to physical
 		for(i=0;i<3;i++)
