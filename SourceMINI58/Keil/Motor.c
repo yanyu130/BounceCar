@@ -28,7 +28,7 @@ void Motor_Start(void)
 	
 	PWM_EnableOutput(PWM, 0x0f);
 	PWM_Start(PWM, 0x0f);
-	MotorPwmOutput(0,0,0,0);
+	//MotorPwmOutput(0,0,0,0);
 }
 
 void Motor_Stop(void)

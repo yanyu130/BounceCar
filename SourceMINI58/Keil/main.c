@@ -183,16 +183,16 @@ void loop()
 			#endif
 			
 			//imu校准
-//			if(imuCaliFlag)
-//			{
-//					if(IMU_Calibrate())
-//					{
-//						imuCaliFlag=0;
-//						gParamsSaveEEPROMRequset=1;	//请求记录到EEPROM
-//						imu.caliPass=1;
-//						LED_OFF();
-//					}
-//			}
+			if(imuCaliFlag)
+			{
+					if(IMU_Calibrate())
+					{
+						imuCaliFlag=0;
+						gParamsSaveEEPROMRequset=1;	//请求记录到EEPROM
+						imu.caliPass=1;
+						LED_OFF();
+					}
+			}
 				
 			//PID二环角速度
 			CtrlAttiRate();
