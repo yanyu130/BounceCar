@@ -29,8 +29,8 @@ void setupUART()
 	/* Peripheral clock source */
 	CLK_SetModuleClock(UART0_MODULE, CLK_CLKSEL1_UARTSEL_HIRC, CLK_CLKDIV_UART(1));
 	/* Set PD multi-function pins for UART0 RXD, TXD */
-	SYS->P5_MFP &= ~(SYS_MFP_P51_Msk | SYS_MFP_P50_Msk);
-  SYS->P5_MFP |= (SYS_MFP_P51_UART0_RXD | SYS_MFP_P50_UART0_TXD);
+	SYS->P0_MFP &= ~(SYS_MFP_P00_Msk | SYS_MFP_P01_Msk);
+  SYS->P0_MFP |= (SYS_MFP_P01_UART0_RXD | SYS_MFP_P00_UART0_TXD);
 	
 	//SYS->P0_MFP = SYS_MFP_P00_TXD | SYS_MFP_P01_RXD;
 	

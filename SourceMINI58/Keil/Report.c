@@ -7,7 +7,7 @@
 #include "Motor.h"
 #include "imu.h"
 
-char report_mode = REPORT_AHRS_EULER;
+char report_mode = REPORT_MOTOR_POWER;
 float PID[9];
 
 void report_angle_pid(void)

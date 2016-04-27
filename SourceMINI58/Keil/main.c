@@ -29,6 +29,8 @@
 #include "FailSafe.h"
 #include "Report.h"
 
+void MotorTest(void);
+
 void setupSystemClock(void)
 {
 		SYS_UnlockReg();
@@ -48,38 +50,7 @@ void setupSystemClock(void)
 		SYS_LockReg();
 }
 
-void MotorTest(void)
-{
-//	static bool falg = false;
-	//		if(GetFrameCount() > 6000 && GetFrameCount() < 8000)
-//		{
-//			Motor_Start();
-//			MotorPwmOutput(20,20,20,20);
-//		}
-//		else if(GetFrameCount() >= 8000  && GetFrameCount() < 10000)
-//		{
-//			MotorPwmOutput(40,40,40,40);
-//		}
-//		else if(GetFrameCount() >= 10000   && GetFrameCount() < 12000)
-//		{
-//			MotorPwmOutput(60,60,60,60);
-//		}
-//		else if(GetFrameCount() >= 12000  && GetFrameCount() < 14000)
-//		{
-//			MotorPwmOutput(80,80,80,80);
-//		}
-//		else if(GetFrameCount() >= 14000 && GetFrameCount() < 16000)
-//		{
-//			MotorPwmOutput(100,100,100,100);
-//		}
-//		else 
-//		if(GetFrameCount() >= 40000 && !falg)
-//		{
-//			falg = true;
-//			MotorPwmOutput(0,0,0,0);
-//			Motor_Stop();
-//		}
-}
+
 
 void setup()
 {
@@ -132,7 +103,7 @@ void setup()
 	//BatteryCheckInit();
 	
 	//初始化遥控
-	Comm_Init();
+	//Comm_Init();
 	
 	
 	
@@ -170,7 +141,7 @@ void loop()
 		CommandProcess();
 			
 		//读取遥控命令
-		Comm_Process();
+		//Comm_Process();
 	
 		if(GetFrameCount()%10 == 0)
 		{
@@ -183,29 +154,27 @@ void loop()
 			#endif
 			
 			//imu校准
-			if(imuCaliFlag)
-			{
-					if(IMU_Calibrate())
-					{
-						imuCaliFlag=0;
-						gParamsSaveEEPROMRequset=1;	//请求记录到EEPROM
-						imu.caliPass=1;
-						LED_OFF();
-					}
-			}
+//			if(imuCaliFlag)
+//			{
+//					if(IMU_Calibrate())
+//					{
+//						imuCaliFlag=0;
+//						gParamsSaveEEPROMRequset=1;	//请求记录到EEPROM
+//						imu.caliPass=1;
+//						LED_OFF();
+//					}
+//			}
 				
-			//PID二环角速度
 			CtrlAttiRate();
 			//控制电机
-			//CtrlMotor();
+			CtrlMotor();
 		}
 
 		if(GetFrameCount()%20 == 0)
 		{
 			//处理遥控数据
 			
-			//PID一环角度控制
-			CtrlAttiAng();
+			
 		}
 
 		if(GetFrameCount()%1000 == 0)
@@ -242,15 +211,50 @@ void loop()
 //			}
 		}
 		
-		
+		//MotorTest();
 		IncFrameCount(1);
 }
+
+
 
 
 int main()
 {
   setup();
 	while(TRUE) loop();
+}
+
+void MotorTest(void)
+{
+	static bool falg = false;
+	//		if(GetFrameCount() > 6000 && GetFrameCount() < 8000)
+//		{
+//			Motor_Start();
+//			MotorPwmOutput(20,20,20,20);
+//		}
+//		else if(GetFrameCount() >= 8000  && GetFrameCount() < 10000)
+//		{
+//			MotorPwmOutput(40,40,40,40);
+//		}
+//		else if(GetFrameCount() >= 10000   && GetFrameCount() < 12000)
+//		{
+//			MotorPwmOutput(60,60,60,60);
+//		}
+//		else if(GetFrameCount() >= 12000  && GetFrameCount() < 14000)
+//		{
+//			MotorPwmOutput(80,80,80,80);
+//		}
+//		else if(GetFrameCount() >= 14000 && GetFrameCount() < 16000)
+//		{
+//			MotorPwmOutput(100,100,100,100);
+//		}
+//		else 
+		if(GetFrameCount() >= 8000 && !falg)
+		{
+			falg = true;
+			MotorPwmOutput(0,0,0,0);
+			Motor_Stop();
+		}
 }
 
 /*** (C) COPYRIGHT ***/

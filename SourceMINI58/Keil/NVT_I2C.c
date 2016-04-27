@@ -417,7 +417,7 @@ void NVT_I2C_Init()
 		CLK_EnableModuleClock(I2C0_MODULE);
 	
 	/* Set P3.4 and P3.5 for I2C SDA and SCL */
-    SYS->P3_MFP = SYS_MFP_P34_I2C0_SDA | SYS_MFP_P35_I2C0_SCL;
+    SYS->P3_MFP |= SYS_MFP_P34_I2C0_SDA | SYS_MFP_P35_I2C0_SCL;
 
 	/* Open I2C and set clock to 400k */
     I2C_Open(I2C, 400000);

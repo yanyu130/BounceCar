@@ -10,16 +10,8 @@ uint32_t ioStatus;
 
 void LED_Init(void)
 {
-	#ifdef NuTiny
-		GPIO_SetMode(P3, BIT6, GPIO_MODE_OUTPUT);        // For NuTiny-SDK-Mini51L
-		//P36 = 0;
-	#elif defined MINI51
-		GPIO_SetMode(P2, BIT6, GPIO_MODE_OUTPUT);
-		//P26 = 1;
-	#elif defined MINI58
-		GPIO_SetMode(P1, BIT4, GPIO_MODE_OUTPUT);
-		//P14 = 1;
-	#endif
+
+		GPIO_SetMode(P5, BIT4, GPIO_MODE_OUTPUT);
 
 	//P14用于MPU6880 DMP中断
 //	GPIO_SetMode(P1, BIT4, GPIO_PMD_INPUT);
@@ -47,29 +39,24 @@ void UpdateLED()
 {
 	
 	ledStatus = !ledStatus;
-	
-	#ifdef NuTiny
-		P36 = ledStatus;
-	#elif defined MINI51
-		P26 = ledStatus;
-	#elif defined MINI58
-		P14 = ledStatus;
-	#endif
+
+	P54 = ledStatus;
+
 }
 
 void LED_ON(void)
 {
-	P14 = 1;
+	P54 = 1;
 }
 
 void LED_Tongle(void)
 {
 	ledStatus = !ledStatus;
-	P14 = ledStatus;
+	P54 = ledStatus;
 }
 
 void LED_OFF(void)
 {
 	
-	P14 = 0;
+	P54 = 0;
 }

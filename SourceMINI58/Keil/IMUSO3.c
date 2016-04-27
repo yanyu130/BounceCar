@@ -325,6 +325,6 @@ void IMUSO3Thread(void)
 		
 		imu.pitch = euler[1] * 57.295780;	//180.0f / M_PI_F;
 		imu.roll = -euler[0]  * 57.295780;	// * 180.0f / M_PI_F;
-		imu.yaw = euler[2] * 57.295780;		// * 180.0f / M_PI_F;
+		imu.yaw = -euler[2] * 57.295780;		// * 180.0f / M_PI_F;
 
 } 
