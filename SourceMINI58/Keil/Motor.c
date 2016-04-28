@@ -28,15 +28,15 @@ void Motor_Init(void)
 void Motor_Start(void)
 {
 	
-	PWM_EnableOutput(PWM, 0xff);
-	PWM_Start(PWM, 0xff);
+	PWM_EnableOutput(PWM, 0x33);
+	PWM_Start(PWM, 0x33);
 	//MotorPwmOutput(0,0,0,0);
 }
 
 void Motor_Stop(void)
 {
-	PWM_DisableOutput(PWM, 0xff);
-	PWM_Stop(PWM, 0xff);
+	PWM_DisableOutput(PWM, 0x33);
+	PWM_Stop(PWM, 0x33);
 	printf("Motor_Stop \n");
 }
 

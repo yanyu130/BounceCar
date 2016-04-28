@@ -13,6 +13,7 @@ enum{FORWARD,BACKWORD,CLOCK_WISE,ANTICLOCK_WISE};
 
 void CtrlAttiAng(void);
 void CtrlAttiRate(void); 
+void CtrlAttiAng2(void);
 void CtrlMotor(void);
 void SetThro(void);
 void CtrlAttiYaw(void);

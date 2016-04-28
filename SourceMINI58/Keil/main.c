@@ -31,6 +31,8 @@
 
 void MotorTest(void);
 
+
+
 void setupSystemClock(void)
 {
 		SYS_UnlockReg();
@@ -68,8 +70,7 @@ void setup()
 	
 	//初始化LED
 	LED_Init();
-	LED_ON();
-	
+	LED_OFF();
 	//初始化IIC
 	I2C_Init();
 	DelayMsec(300);		//延迟下，再去读传感器，不延迟下，读取传感器会失败
@@ -117,7 +118,7 @@ void setup()
 
 	//初始化电机
 	Motor_Init();
-	Motor_Start();
+	//Motor_Start();
 	
 	//电机怠转
 	//MotorPwmOutput(20,20,20,20);
@@ -164,8 +165,9 @@ void loop()
 //						LED_OFF();
 //					}
 //			}
-				
-			CtrlAttiRate();
+			//CtrlAttiAng();	
+			//CtrlAttiRate();
+			CtrlAttiAng2();
 			//控制电机
 			CtrlMotor();
 		}
@@ -220,6 +222,7 @@ void loop()
 
 int main()
 {
+	
   setup();
 	while(TRUE) loop();
 }
