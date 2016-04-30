@@ -106,8 +106,6 @@ void setup()
 	//初始化遥控
 	//Comm_Init();
 	
-	
-	
 	//测试用，延迟启动时间
 //	for(i=0;i<6;i++)
 //	{
@@ -119,9 +117,7 @@ void setup()
 	//初始化电机
 	Motor_Init();
 	//Motor_Start();
-	
-	//电机怠转
-	//MotorPwmOutput(20,20,20,20);
+
 	
 	//初始化自稳定
 	IMU_Init();			// sample rate and cutoff freq.  sample rate is too low now due to using dmp.
@@ -154,21 +150,12 @@ void loop()
 				DMP_Routing();	//DMP 线程  所有的数据都在这里更新
 			#endif
 			
-			//imu校准
-//			if(imuCaliFlag)
-//			{
-//					if(IMU_Calibrate())
-//					{
-//						imuCaliFlag=0;
-//						gParamsSaveEEPROMRequset=1;	//请求记录到EEPROM
-//						imu.caliPass=1;
-//						LED_OFF();
-//					}
-//			}
-			
-			//CtrlAttiRate();
-			CtrlAttiAng();
-			//CtrlAttiSpeed();
+			if(CarMode == HAND_STAND)
+			{
+				//平衡站立
+				CtrlAttiAng();
+			}
+
 			//控制电机
 			CtrlMotor();
 		}

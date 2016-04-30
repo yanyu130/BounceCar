@@ -87,18 +87,6 @@ void UART_HANDLE()
         }
     }
 		
-//		if(u32IntSts & UART_ISR_THRE_INT_Msk) {
-//			printf("\nInput:");
-////        uint16_t tmp;
-////        tmp = g_u32comRtail;
-////        if(g_u32comRhead != tmp) {
-////            u8InChar = g_u8RecData[g_u32comRhead];
-////            UART_WRITE(UART,u8InChar);
-////            g_u32comRhead = (g_u32comRhead == (RXBUFSIZE-1)) ? 0 : (g_u32comRhead+1);
-////            g_u32comRbytes--;
-////        }
-//    }
-		
 		
 }
 
@@ -152,6 +140,34 @@ void CommandProcess(void)
 					{// 'p'ause stream
 						//stream_mode = STREAM_PAUSE;
 						Motor_Stop();
+					}
+					else if (mode == 'h') //'H'andstandMode	倒立
+					{
+						SetHandstandMode();
+					}
+					else if (mode == 'n') //'N'ormalMode	正常
+					{
+						SetNormalMode();
+					}
+			}
+			if (command == 'a')
+			{
+					mode = GetUartChar();
+					if (mode == 'f')
+					{
+						ActionHandle(FORWARD,40);
+					}
+					else if (mode == 'b') 
+					{
+						ActionHandle(BACKWORD,40);
+					}
+					else if (mode == 'c') 
+					{
+						ActionHandle(CLOCK_WISE,40);
+					}
+					else if (mode == 'a') 
+					{
+						ActionHandle(ANTICLOCK_WISE,40);
 					}
 			}
 			else if(command == 'v')	//Check 'v'ersion

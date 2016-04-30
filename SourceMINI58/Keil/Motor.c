@@ -4,10 +4,10 @@
 #include "control.h"
 
 //飞机正方向，左下角为电机1，逆时钟以此类推，电机2，电机3，电机4
-#define MOTOR_1 0
-#define MOTOR_2 1
-#define MOTOR_3 4
-#define MOTOR_4 5
+#define MOTOR_1 4
+#define MOTOR_2 5
+#define MOTOR_3 0
+#define MOTOR_4 1
 
 int16_t motor1PWM, motor2PWM, motor3PWM, motor4PWM; 
 
@@ -32,7 +32,7 @@ void Motor_Start(void)
 	PWM_EnableOutput(PWM, 0x33);
 	PWM_Start(PWM, 0x33);
 	//MotorPwmOutput(0,0,0,0);
-	g_fSpeedControlIntegral = 0;
+	//g_fSpeedControlIntegral = 0;
 }
 
 void Motor_Stop(void)
