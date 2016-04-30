@@ -27,10 +27,10 @@ uint8_t gParamsSaveEEPROMRequset=0;
      pitch_rate_PID.D  = 0.0;
 		 pitch_rate_PID.iLimit = 30;
 //////////////////////////////////////////////
-     roll_angle_PID.P = 2.8;		//4
-     roll_angle_PID.I = 0;
-     roll_angle_PID.D = 0;
-		 roll_angle_PID.iLimit = 30;	//or 1000
+     speed_angle_PID.P = 0.1;		//4
+     speed_angle_PID.I = 0.1;
+     speed_angle_PID.D = 0;
+		 speed_angle_PID.iLimit = 30;	//or 1000
 
      roll_rate_PID.P  = 0.15;	//0.09
      roll_rate_PID.I  = 0.05; 		//9.5/8.9
@@ -121,7 +121,7 @@ void TableToParam(void)
 		for(i=0;i<3;i++)
 		{
 			((float *)(&pitch_angle_PID))[i]=((float *)(&table.pidPitch))[i];
-			((float *)(&roll_angle_PID))[i]=((float *)(&table.pidRoll))[i];
+			((float *)(&speed_angle_PID))[i]=((float *)(&table.pidRoll))[i];
 			((float *)(&yaw_angle_PID))[i]=((float *)(&table.pidYaw))[i];
 			
 			((float *)(&pitch_rate_PID))[i]=((float *)(&table.pidPitchRate))[i];
@@ -158,9 +158,9 @@ void ParamToTable(void)
 		for(i=0;i<3;i++)
 		{
 			((float *)(&table.pidPitch))[i]=((float *)(&pitch_angle_PID))[i];
-				temp=((float *)(&roll_angle_PID))[i];
-				*((float *)(&table.pidRoll) + i) =  ((float *)(&roll_angle_PID))[i];
-			((float *)(&table.pidRoll))[i]=((float *)(&roll_angle_PID))[i];
+				temp=((float *)(&speed_angle_PID))[i];
+				*((float *)(&table.pidRoll) + i) =  ((float *)(&speed_angle_PID))[i];
+			((float *)(&table.pidRoll))[i]=((float *)(&speed_angle_PID))[i];
 			((float *)(&table.pidYaw))[i]=((float *)(&yaw_angle_PID))[i];
 			
 			((float *)(&table.pidPitchRate))[i]=((float *)(&pitch_rate_PID))[i];

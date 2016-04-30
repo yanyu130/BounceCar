@@ -165,9 +165,10 @@ void loop()
 //						LED_OFF();
 //					}
 //			}
-			//CtrlAttiAng();	
+			
 			//CtrlAttiRate();
-			CtrlAttiAng2();
+			CtrlAttiAng();
+			//CtrlAttiSpeed();
 			//控制电机
 			CtrlMotor();
 		}
@@ -199,8 +200,7 @@ void loop()
 			
 			//电池低电压处理
 			//printf("Convert result is %d\n", GetBatteryAD());
-			
-			
+
 		}
 		
 		//打印调试信息
@@ -218,11 +218,8 @@ void loop()
 }
 
 
-
-
 int main()
 {
-	
   setup();
 	while(TRUE) loop();
 }

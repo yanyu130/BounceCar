@@ -73,10 +73,6 @@ void ReportMessage(void)
 	{
 		report_euler();
 	}
-	else if(report_mode == REPORT_SENSORS_RAW) 
-	{
-		report_sensor_raw();
-	}
 	
 }
 

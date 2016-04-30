@@ -1,6 +1,7 @@
 #include "Motor.h"
 #include "def.h"
 #include "Timer_Ctrl.h"
+#include "control.h"
 
 //飞机正方向，左下角为电机1，逆时钟以此类推，电机2，电机3，电机4
 #define MOTOR_1 0
@@ -31,6 +32,7 @@ void Motor_Start(void)
 	PWM_EnableOutput(PWM, 0x33);
 	PWM_Start(PWM, 0x33);
 	//MotorPwmOutput(0,0,0,0);
+	g_fSpeedControlIntegral = 0;
 }
 
 void Motor_Stop(void)
@@ -51,7 +53,7 @@ void MotorPwmOutput(int16_t MOTO1_PWM,int16_t MOTO2_PWM,int16_t MOTO3_PWM,int16_
 	if(MOTO2_PWM < 0)	MOTO2_PWM = 0;
 	if(MOTO3_PWM < 0)	MOTO3_PWM = 0;
 	if(MOTO4_PWM < 0)	MOTO4_PWM = 0;
-		
+
 	PWM_ConfigOutputChannel(PWM, MOTOR_1, 400, MOTO1_PWM);
 	
 	PWM_ConfigOutputChannel(PWM, MOTOR_2, 400, MOTO2_PWM);

@@ -162,7 +162,7 @@ void CommandProcess(void)
 				SetPID();
 			}
 			else if (command == 't') {// Set 'Thro'id command
-				SetThro();
+				SetTargetAngle();
 			}
 			else if(command == 'r')	 //Set 'r'eport mode
 			{

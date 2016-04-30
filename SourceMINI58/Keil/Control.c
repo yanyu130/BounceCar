@@ -11,13 +11,18 @@
 float fStabilityPError;
 float fStabilityDError;
 
+float g_fSpeedControlIntegral = 0;
+
+float g_Speed = 0;
+
 float BasicSpeed=45, Roll=0, Pitch=0, Yaw=0;
 int16_t Motor[4]={0};   //定义电机PWM数组，分别对应M1-M4
 
-int8_t DeadZone = 0;
+int8_t DeadZone = 5;
+int8_t TurnRound = 0;
 
 int8_t mode = FORWARD;
-
+int16_t TargetAngle = 80;
 //IMU
 typedef struct float_xyz
 {
@@ -38,45 +43,19 @@ float stabilityPDControl(float inputAngle, float setAnglePoint, float inputAngle
   
   float output;
 
-  errorAngle = setAnglePoint-inputAngle;
-  errorAngleSpeed = setAngleSpeedPoint - inputAngleSpeed;
+  errorAngle = inputAngle - setAnglePoint;
+  errorAngleSpeed = inputAngleSpeed - setAngleSpeedPoint;
 
-  // Kd is implemented in two parts
-  //    The biggest one using only the input (sensor) part not the SetPoint input-input(t-2)
-  //    And the second using the setpoint to make it a bit more agressive   setPoint-setPoint(t-1)
   fStabilityPError = Kp*errorAngle;
   fStabilityDError = Kd*errorAngleSpeed;
   output = Kp*errorAngle + Kd*errorAngleSpeed;//(Kd*(setPoint - setPointOld) - Kd*(input - PID_errorOld2))/DT;       // + error - PID_error_Old2
-  //PID_errorOld2 = PID_errorOld;
-  //PID_errorOld = input;  // error for Kd is only the input component
-  //setPointOld = setPoint;
-  //output = constrain(output,-255,255);
+
   return(output);
 }
 
 void CtrlAttiAng(void)
 {
-		static uint32_t tPrev=0;
-		float angTarget[3]={0};
-		float dt=0,t=0;
-		t = getSystemTime();
-		dt=(tPrev>0)?(t-tPrev):0;
-		tPrev=t;
-		
-		//angTarget[ROLL]=(float)(RC_DATA.ROOL);
-		angTarget[PITCH] = 90;
-		
- 
-		PID_Postion_Cal(&pitch_angle_PID,angTarget[PITCH],imu.pitch,dt);
-		//PID_Postion_Cal(&roll_angle_PID,angTarget[ROLL],imu.roll,dt);	 
-		//Pitch = pitch_angle_PID.Output;
-}
-
-void CtrlAttiAng2(void)
-{
-		
- 
-		Pitch = -stabilityPDControl(imu.pitch, 70, -imu.gyro[ROLL],0,
+		Pitch = stabilityPDControl(imu.pitch, TargetAngle, -imu.gyro[PITCH],0,
 										pitch_angle_PID.P,pitch_rate_PID.P);
 	
 		//Pitch = pitch_angle_PID.Output;
@@ -84,6 +63,41 @@ void CtrlAttiAng2(void)
 			//float inputAngleSpeed, float setAngleSpeedPoint, float Kp, float Kd)
 
 }
+
+//速度控制函数
+float SpeedPIControl(int8_t Angle, int8_t nTargetAngle)
+{
+  float fDelta;
+  float fP, fI;
+  float output;
+  
+  
+  fDelta = nTargetAngle - Angle;    //nTargetSpeed是目标速度
+  fP = fDelta * speed_angle_PID.P;  
+  fI = fDelta * speed_angle_PID.I;
+  
+  g_fSpeedControlIntegral += fI;
+	if(g_fSpeedControlIntegral > speed_angle_PID.iLimit) 
+	{
+		g_fSpeedControlIntegral = speed_angle_PID.iLimit;
+	}
+	if(g_fSpeedControlIntegral < -speed_angle_PID.iLimit) 
+	{
+		g_fSpeedControlIntegral = -speed_angle_PID.iLimit;
+	}
+  
+  output =  g_fSpeedControlIntegral + fP;
+  
+
+  return output;
+}
+
+//void CtrlAttiSpeed(void)
+//{
+//	g_Speed = SpeedPIControl(imu.pitch, TargetAngle);
+//}
+
+
 
 void CtrlAttiRate(void)
 {
@@ -128,17 +142,28 @@ void CtrlAttiRate(void)
 //    Yaw   = yaw_rate_PID.Output;
 //}
 
+void TurnForward(int16_t leftPWM, int16_t rightPWM)
+{
+	MotorPwmOutput(0,leftPWM,0,rightPWM);
+}
+
+
+void TurnBackward(int16_t leftPWM, int16_t rightPWM)
+{
+	MotorPwmOutput(leftPWM,0,rightPWM,0);
+}
+
 void CtrlMotor(void)
 {
-	int leftSpeed,rightSpeed;
+	int16_t leftSpeed,rightSpeed;
 	
 	//将输出值融合到四个电机 
 //		Motor[0] = (int16_t)(BasicSpeed - Yaw );     
 //		Motor[2] = (int16_t)(BasicSpeed + Yaw ); 
 
 //		Motor[1] = (int16_t)(BasicSpeed + Yaw );   	
-//		Motor[3] = (int16_t)(BasicSpeed - Yaw ); 
-
+//		Motor[3] = (int16_t)(BasicSpeed - Yaw );
+	//Pitch = Pitch - g_Speed;
 	if(Pitch > 0)
 	{
 		leftSpeed = Pitch + DeadZone;
@@ -147,19 +172,32 @@ void CtrlMotor(void)
 	else
 	{
 		leftSpeed = Pitch - DeadZone;
-		rightSpeed = Pitch - DeadZone;
+		rightSpeed = Pitch - DeadZone; 
 	}
 	
-		if(leftSpeed > 0)
+	leftSpeed -=   TurnRound;
+	rightSpeed +=   TurnRound;
+	
+		if(leftSpeed > 0 && rightSpeed > 0)
 		{
-			MotorPwmOutput(leftSpeed,0,rightSpeed,0);		//forward
+			TurnForward(leftSpeed,rightSpeed);		//forward
 		}
-		else
+		else if(leftSpeed <= 0 && rightSpeed <= 0)
 		{
-			MotorPwmOutput(0,-leftSpeed,0,-rightSpeed);		//backward
+			TurnBackward(-leftSpeed,-rightSpeed);		//backward
+		}
+		else if(leftSpeed > 0 && rightSpeed <= 0)
+		{
+			MotorPwmOutput(0,leftSpeed,-rightSpeed,0);		
+		}
+		else if(leftSpeed <= 0 && rightSpeed > 0)
+		{
+			MotorPwmOutput(-leftSpeed,0,0,rightSpeed);		
 		}
 	
 }
+
+
 
 int GetIntValue()
 {
@@ -173,13 +211,13 @@ int GetIntValue()
 	return atoi(value_s);
 }
 
-void SetThro()
+void SetTargetAngle()
 {
 	//char type = GetUartChar();
 	uint8_t value;
 	//if(type=='t') 
 		{
 			value = GetIntValue();
-			BasicSpeed = value;
+			TurnRound = value;
 	}
 }
