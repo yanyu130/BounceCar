@@ -39,8 +39,8 @@ const uint8_t Carrier_Dem_cal2_data[]  = {0x0B,0xDF,0x02};
 /******************************************************************************/
 void SPI_init(void)
 {    
-	GPIO_SetMode(P0, BIT4, GPIO_MODE_OUTPUT);	//CSN PIN output High pulling push
-	P04 = 1;
+	GPIO_SetMode(P0, BIT5, GPIO_MODE_OUTPUT);	//CSN PIN output High pulling push
+	P05 = 1;
 	GPIO_SetMode(P0, BIT7, GPIO_MODE_OUTPUT);	//SCK PIN output Low  pulling push 
 	P07 = 0;
 	GPIO_SetMode(P0, BIT6, GPIO_MODE_OUTPUT);  //DATA PIN output  DEFAULT  High pulling push

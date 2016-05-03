@@ -104,7 +104,7 @@ void setup()
 	//BatteryCheckInit();
 	
 	//初始化遥控
-	//Comm_Init();
+	Comm_Init();
 	
 	//测试用，延迟启动时间
 //	for(i=0;i<6;i++)
@@ -138,7 +138,7 @@ void loop()
 		CommandProcess();
 			
 		//读取遥控命令
-		//Comm_Process();
+		Comm_Process();
 	
 		if(GetFrameCount()%10 == 0)
 		{
@@ -150,6 +150,13 @@ void loop()
 				DMP_Routing();	//DMP 线程  所有的数据都在这里更新
 			#endif
 			
+			
+		}
+
+		if(GetFrameCount()%20 == 0)
+		{
+			//处理遥控数据
+			
 			if(CarMode == HAND_STAND)
 			{
 				//平衡站立
@@ -158,13 +165,6 @@ void loop()
 
 			//控制电机
 			CtrlMotor();
-		}
-
-		if(GetFrameCount()%20 == 0)
-		{
-			//处理遥控数据
-			
-			
 		}
 
 		if(GetFrameCount()%1000 == 0)

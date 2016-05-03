@@ -157,15 +157,15 @@ void CommandProcess(void)
 					{
 						ActionHandle(FORWARD,40);
 					}
-					else if (mode == 'b') 
+					else if (mode == 'b')
 					{
 						ActionHandle(BACKWORD,40);
 					}
-					else if (mode == 'c') 
+					else if (mode == 'c')
 					{
 						ActionHandle(CLOCK_WISE,40);
 					}
-					else if (mode == 'a') 
+					else if (mode == 'a')
 					{
 						ActionHandle(ANTICLOCK_WISE,40);
 					}

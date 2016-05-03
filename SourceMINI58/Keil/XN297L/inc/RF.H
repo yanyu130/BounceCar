@@ -16,8 +16,8 @@
 /******************** Control I/O *****************************/
 #include "def.h"
 
-#define         CSN_HIGH                (P04 = 1)
-#define         CSN_LOW                 (P04 = 0)
+#define         CSN_HIGH                (P05 = 1)
+#define         CSN_LOW                 (P05 = 0)
 #define         SCK_HIGH                (P07 = 1)
 #define         SCK_LOW                 (P07 = 0)
 
