@@ -65,7 +65,7 @@
 
 
 //配对期间，使用公共地址和频率
-#define BIND_ADDR							0xFFFFFFFF
+#define BIND_ADDR							0xEEEEEEEE
 #define BIND_ADDR_LENG						ADDR_LENG_4BYTE
 #define	BIND_CHANNEL						0x00
 	
@@ -82,7 +82,6 @@ extern uint8_t Comm_Data[5];
 extern uint16_t Comm_Timeout;
 extern uint8_t Comm_CurrentStatus;
 
-extern bool Comm_getRC_data;
 
 void Comm_Init							(void);
 void Comm_Process						(void);

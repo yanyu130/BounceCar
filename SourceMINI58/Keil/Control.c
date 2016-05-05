@@ -7,6 +7,7 @@
 #include "UartCtrl.h"
 #include "stdlib.h"
 
+#define DEFAULT_ANGLE 79
 
 float fStabilityPError;
 float fStabilityDError;
@@ -18,13 +19,16 @@ float g_fSpeedControlIntegral = 0;
 float BasicSpeed=45, Roll=0, Pitch=0, Yaw=0;
 int16_t Motor[4]={0};   //定义电机PWM数组，分别对应M1-M4
 
-int8_t DeadZone = 5;
+int8_t DeadZone = 0;
 int8_t TurnRound = 0;
 
 int8_t Action = FORWARD;
-int8_t CarMode = NORMAL;
+int8_t CarMode = HAND_STAND;
 
-int16_t TargetAngle = 80;
+int16_t TargetAngle = DEFAULT_ANGLE;
+
+ACTION currentAction;
+
 //IMU
 typedef struct float_xyz
 {
@@ -196,10 +200,6 @@ void CtrlMotor(void)
 		MotorPower(leftSpeed, rightSpeed);
 	}
 	
-	
-	
-	
-	
 }
 
 
@@ -235,27 +235,115 @@ void SetNormalMode()
 		TargetAngle = -33;
 }
 
+void SetActionUsingTime(int8_t action,int32_t time,int8_t speed)
+{
+	currentAction.actionType = action;
+	currentAction.stopTime = getSystemTime() + time;
+	currentAction.speed = speed;
+}
 
-void ActionHandle(int8_t action,int8_t speed)
+void DoActionUsingTime()	//time(ms)
+{
+	if(getSystemTime() <= currentAction.stopTime)
+	{
+		ActionHandle(currentAction.actionType, currentAction.speed);
+	}
+	else
+	{
+			MotorPwmOutput(0,0,0,0);
+	}
+}
+void DoActionUsingTime2()	//time(ms)
+{
+	if(getSystemTime() <= currentAction.stopTime)
+	{
+		ActionHandle2(currentAction.actionType, currentAction.speed);
+	}
+	else
+	{
+			TurnRound = 0;
+			TargetAngle = DEFAULT_ANGLE;
+	}
+}
+
+
+void ActionHandle2(int8_t action,int8_t speed)
 {
 	switch(action)
 	{
+//		case STOP:
+//		{
+//			MotorPwmOutput(0,0,0,0);
+//		}
 		case FORWARD:
 		{
 			MotorPower(speed,speed);
 		}
 		break;
-		case BACKWORD:
+		case BACKWARD:
 		{
 			MotorPower(-speed,-speed);
 		}
 		break;
-		case CLOCK_WISE:	//顺时针
+		case CLOCK_WISE_LITTLE:	//顺时针
+		{
+			TurnRound = 40;
+			//MotorPower(speed,-speed);
+		}
+		break;
+		case ANTICLOCK_WISE_LITTLE:	//逆时针
+		{
+			TurnRound = -40;
+			//MotorPower(-speed,speed);
+		}
+		case CLOCK_WISE_BIG:	//顺时针
+		{
+			TurnRound = 60;
+			//MotorPower(speed,-speed);
+		}
+		break;
+		case ANTICLOCK_WISE_BIG:	//逆时针
+		{
+			TurnRound = -60;
+			//MotorPower(-speed,speed);
+		}
+		break;
+	}
+}
+
+void ActionHandle(int8_t action,int8_t speed)
+{
+	switch(action)
+	{
+//		case STOP:
+//		{
+//			MotorPwmOutput(0,0,0,0);
+//		}
+		case FORWARD:
+		{
+			MotorPower(speed,speed);
+		}
+		break;
+		case BACKWARD:
+		{
+			MotorPower(-speed,-speed);
+		}
+		break;
+		case CLOCK_WISE_LITTLE:	//顺时针
 		{
 			MotorPower(speed,-speed);
 		}
 		break;
-		case ANTICLOCK_WISE:	//逆时针
+		case ANTICLOCK_WISE_LITTLE:	//逆时针
+		{
+			MotorPower(-speed,speed);
+		}
+		case CLOCK_WISE_BIG:	//顺时针
+		{
+			MotorPower(speed,-speed);
+		}
+		break;
+		case ANTICLOCK_WISE_BIG:	//逆时针
 		{
 			MotorPower(-speed,speed);
 		}

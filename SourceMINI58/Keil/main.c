@@ -25,7 +25,7 @@
 #include "IMUSO3.h"
 #include "IMU.h"
 #include "DMP.h"
-#include "Comm.h"
+
 #include "FailSafe.h"
 #include "Report.h"
 
@@ -104,7 +104,7 @@ void setup()
 	//BatteryCheckInit();
 	
 	//初始化遥控
-	Comm_Init();
+	RC_init();
 	
 	//测试用，延迟启动时间
 //	for(i=0;i<6;i++)
@@ -137,41 +137,46 @@ void loop()
 		//处理蓝牙命令
 		CommandProcess();
 			
-		//读取遥控命令
-		Comm_Process();
+		//更新遥控状态
+		RC_Update();
+			
+		//执行动作
+		//DoActionUsingTime();
 	
 		if(GetFrameCount()%10 == 0)
 		{
-			
 			//读取姿态传感器数据
 			#ifdef IMU_SW												//软件姿态解算
 				IMUSO3Thread();
 			#else
 				DMP_Routing();	//DMP 线程  所有的数据都在这里更新
 			#endif
-			
-			
 		}
 
 		if(GetFrameCount()%20 == 0)
 		{
-			//处理遥控数据
-			
+			//遥控命令监测
+			RC_CommandDetect();
+
 			if(CarMode == HAND_STAND)
 			{
 				//平衡站立
 				CtrlAttiAng();
+				//控制电机
+				CtrlMotor();
+				DoActionUsingTime2();
+			}
+			else
+			{
+					DoActionUsingTime();
 			}
 
-			//控制电机
-			CtrlMotor();
 		}
 
 		if(GetFrameCount()%1000 == 0)
 		{
 			//电池电池检测
 			//BatteryCheck();
-			
 			
 			//遥控通信丢失处理
 			
@@ -193,14 +198,13 @@ void loop()
 		//打印调试信息
 		if(GetFrameCount()%100 == 0)
 		{
-			ReportMessage();
+			//ReportMessage();
 //			if(Comm_Data && Comm_Data[4]>0)
 //			{
 //				printf("Comm_Data%d,%d,%d,%d,%d\n",Comm_Data[0],Comm_Data[1],Comm_Data[2],Comm_Data[3],Comm_Data[4]);
 //			}
 		}
-		
-		//MotorTest();
+
 		IncFrameCount(1);
 }
 

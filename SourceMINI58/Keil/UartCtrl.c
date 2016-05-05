@@ -12,6 +12,7 @@
 #include "ConfigTable.h"
 #include "Control.h"
 
+
 uint8_t getUartData = FALSE;
 
 uint8_t g_u8RecData[RXBUFSIZE]  = {0};
@@ -159,15 +160,15 @@ void CommandProcess(void)
 					}
 					else if (mode == 'b')
 					{
-						ActionHandle(BACKWORD,40);
+						ActionHandle(BACKWARD,40);
 					}
 					else if (mode == 'c')
 					{
-						ActionHandle(CLOCK_WISE,40);
+						ActionHandle(CLOCK_WISE_LITTLE,40);
 					}
 					else if (mode == 'a')
 					{
-						ActionHandle(ANTICLOCK_WISE,40);
+						ActionHandle(ANTICLOCK_WISE_LITTLE,40);
 					}
 			}
 			else if(command == 'v')	//Check 'v'ersion

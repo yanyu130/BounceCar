@@ -44,7 +44,6 @@ uint8_t Comm_RecDataBuf[PKT_LENG];		//RF接收数据缓冲区
 uint16_t Comm_Timeout;					//超时计数器
 uint8_t Comm_Data[5];					//给上层访问的接收到的数据
 
-bool Comm_getRC_data = false;
 
 uint32_t Comm_TimerTick;
 /********************************************************************
@@ -462,7 +461,6 @@ void Comm_Process(void)
 						Comm_Data[2] = Comm_RecDataBuf[12];
 						Comm_Data[3] = Comm_RecDataBuf[13];
 						Comm_Data[4] = Comm_RecDataBuf[14];
-						Comm_getRC_data = true;
 						Comm_Flag |= Comm_NewData_Mask;
 					}
 					Comm_CurrentAddr = Comm_DevAddr;
