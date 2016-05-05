@@ -1,11 +1,16 @@
 #include "RC.h"
 #include "def.h"
-#include "Comm.h"
+
 #include "stdio.h"
 #include "control.h"
 #include "motor.h"
 
 RC_GETDATA RC_DATA;
+
+uint8_t getRC_Status()
+{
+		return Comm_CurrentStatus;
+}
 
 //初始化遥控
 void RC_init(void)

@@ -126,8 +126,6 @@ void setup()
 
 }
 
-
-
 void loop()
 {
 		static uint32_t nextTick = 0;
@@ -139,9 +137,6 @@ void loop()
 			
 		//更新遥控状态
 		RC_Update();
-			
-		//执行动作
-		//DoActionUsingTime();
 	
 		if(GetFrameCount()%10 == 0)
 		{
@@ -164,11 +159,12 @@ void loop()
 				CtrlAttiAng();
 				//控制电机
 				CtrlMotor();
+				
 				DoActionUsingTime2();
 			}
 			else
 			{
-					DoActionUsingTime();
+				DoActionUsingTime();
 			}
 
 		}
@@ -180,6 +176,7 @@ void loop()
 			
 			//遥控通信丢失处理
 			
+			
 			//更新LED灯状态
 			UpdateLED();
 		}
@@ -187,8 +184,11 @@ void loop()
 		//故障保护
 		if(GetFrameCount()%100 == 0)
 		{
-			//飞控翻覆时，停止电机
-			 //FailSafeCrash();
+			//站立时，翻覆处理
+			 FailSafeCrash();
+			
+			//与遥控连接断开
+			FailSafeLostRC();
 			
 			//电池低电压处理
 			//printf("Convert result is %d\n", GetBatteryAD());
@@ -198,7 +198,7 @@ void loop()
 		//打印调试信息
 		if(GetFrameCount()%100 == 0)
 		{
-			//ReportMessage();
+			ReportMessage();
 //			if(Comm_Data && Comm_Data[4]>0)
 //			{
 //				printf("Comm_Data%d,%d,%d,%d,%d\n",Comm_Data[0],Comm_Data[1],Comm_Data[2],Comm_Data[3],Comm_Data[4]);

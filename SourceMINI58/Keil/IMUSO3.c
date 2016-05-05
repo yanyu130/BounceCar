@@ -324,6 +324,11 @@ void IMUSO3Thread(void)
 //		imu.yawRad = euler[2];
 		
 		imu.pitch = euler[1] * 57.295780;	//180.0f / M_PI_F;
+		//为适应功能，对PITCH做特殊处理。PITCH范围是-90~ + 270
+		if(imu.pitch < -90 && imu.pitch > -180)
+		{
+			imu.pitch = 360+imu.pitch;
+		}
 		imu.roll = -euler[0]  * 57.295780;	// * 180.0f / M_PI_F;
 		imu.yaw = -euler[2] * 57.295780;		// * 180.0f / M_PI_F;
 

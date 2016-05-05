@@ -253,6 +253,7 @@ void DoActionUsingTime()	//time(ms)
 			MotorPwmOutput(0,0,0,0);
 	}
 }
+
 void DoActionUsingTime2()	//time(ms)
 {
 	if(getSystemTime() <= currentAction.stopTime)

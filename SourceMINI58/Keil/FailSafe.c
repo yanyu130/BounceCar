@@ -2,17 +2,27 @@
 #include "IMU.h"
 #include "math.h"
 #include "motor.h"
+#include "control.h"
+#include "RC.h"
 
-#define FAIL_SAFE_ANGLE 90
 
+#define FAIL_SAFE_ANGLE_LOW -20
+#define FAIL_SAFE_ANGLE_HIGH 180
 void FailSafeCrash(void)
 {
-			 
-			if(fabs(imu.pitch) >= FAIL_SAFE_ANGLE || fabs(imu.roll) >= FAIL_SAFE_ANGLE )
+		if(CarMode == HAND_STAND) 
+		{
+			if(imu.pitch >= FAIL_SAFE_ANGLE_HIGH || imu.pitch <= FAIL_SAFE_ANGLE_LOW )
 			{
-			//	RC_DATA.THROTTLE=LAND_THRO;
-				Motor_Stop();
-				//MotorPwmOutput(0,0,0,0);
-				//FLY_ENABLE=0;
+				CarMode = NORMAL;
 			} 
+		}
+}
+
+void FailSafeLostRC(void)
+{
+	if(getRC_Status() == STATUS_LOST)
+	{
+		Motor_Stop();
+	}
 }

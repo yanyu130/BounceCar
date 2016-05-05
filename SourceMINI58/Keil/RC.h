@@ -2,6 +2,7 @@
 #define RC_H
 
 #include <stdint.h>
+#include "Comm.h"
 
 //#define FORWARD 1
 //#define BACKWARD 2
@@ -43,5 +44,7 @@ void RC_Update(void);
 
 //遥控命令监测
 void RC_CommandDetect(void);
+
+uint8_t getRC_Status(void);
  
 #endif
