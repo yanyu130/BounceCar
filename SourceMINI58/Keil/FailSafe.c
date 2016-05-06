@@ -26,3 +26,4 @@ void FailSafeLostRC(void)
 		Motor_Stop();
 	}
 }
+

@@ -28,6 +28,7 @@
 
 #include "FailSafe.h"
 #include "Report.h"
+#include "SleepCtrl.h"
 
 void MotorTest(void);
 
@@ -67,6 +68,8 @@ void setup()
 
 	//初始化System_tick
 	setup_system_tick(SYSTEM_TICK_FREQ);
+	
+	InitSleepIO();
 	
 	//初始化LED
 	LED_Init();
@@ -128,6 +131,7 @@ void setup()
 
 void loop()
 {
+	static bool falg = false;
 		static uint32_t nextTick = 0;
 		while(getSystemTime()<nextTick){}
 		nextTick = getSystemTime()+TICK_FRAME_PERIOD;	//循环间隔FRAME
@@ -178,6 +182,7 @@ void loop()
 			
 			
 			//更新LED灯状态
+			//UpdateLED();
 			UpdateLED();
 		}
 		
@@ -204,7 +209,12 @@ void loop()
 //				printf("Comm_Data%d,%d,%d,%d,%d\n",Comm_Data[0],Comm_Data[1],Comm_Data[2],Comm_Data[3],Comm_Data[4]);
 //			}
 		}
-
+		if(GetFrameCount() >= 8000  && !falg)
+		{
+			falg = true;
+			LED_OFF();
+			IntoSleep();
+		}
 		IncFrameCount(1);
 }
 
@@ -212,6 +222,7 @@ void loop()
 int main()
 {
   setup();
+	IntoSleep();
 	while(TRUE) loop();
 }
 
