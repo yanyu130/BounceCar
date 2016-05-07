@@ -589,6 +589,11 @@
               <FileType>1</FileType>
               <FilePath>.\Report.c</FilePath>
             </File>
+            <File>
+              <FileName>SleepCtrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SleepCtrl.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -703,6 +708,11 @@
               <FileName>Report.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Report.h</FilePath>
+            </File>
+            <File>
+              <FileName>SleepCtrl.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SleepCtrl.h</FilePath>
             </File>
           </Files>
         </Group>

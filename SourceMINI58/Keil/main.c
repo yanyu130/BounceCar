@@ -209,21 +209,60 @@ void loop()
 //				printf("Comm_Data%d,%d,%d,%d,%d\n",Comm_Data[0],Comm_Data[1],Comm_Data[2],Comm_Data[3],Comm_Data[4]);
 //			}
 		}
-		if(GetFrameCount() >= 8000  && !falg)
-		{
-			falg = true;
-			LED_OFF();
-			IntoSleep();
-		}
+//		if(GetFrameCount() >= 8000  && !falg)
+//		{
+//			falg = true;
+//			LED_OFF();
+//			IntoSleep();
+//		}
 		IncFrameCount(1);
 }
 
 
 int main()
 {
+	//开机默认进入休眠
+	InitSleepIO();
+	IntoSleep();	
+	
   setup();
-	IntoSleep();
-	while(TRUE) loop();
+	while(TRUE) 
+	{
+		if(OPERTION_MODE == OPERATION)	//工作模式下
+		{
+			//查询
+			//1.是否允许切换模式 2.按键是否按下 3.按下按键距今的时间
+			if(PermitTonggleOperation && PressIsOn 
+				&& (getSystemTime() - LastPressTime > WAKE_TIME))
+			{
+				OPERTION_MODE = SLEEP;
+				IntoSleep();
+				//printf("SLEEP");
+				PermitTonggleOperation = false;
+			}
+			else
+			{
+				loop();
+			}
+		}
+		else if(OPERTION_MODE == SLEEP)	//休眠模式下
+		{
+			//1.是否允许切换模式 2.按键是否按下 3.按下按键距今的时间
+			if(PermitTonggleOperation &&  PressIsOn 
+				&& (getSystemTime() - LastPressTime > WAKE_TIME))
+			{
+				OPERTION_MODE = OPERATION;
+				//printf("OPERATION");
+				PermitTonggleOperation = false;
+			}
+			else if(PressIsOn == false)	//按键弹起时，会唤醒，但不满足唤醒条件，需进入休眠
+			{
+				//printf("SLEEP");
+				IntoSleep();
+				
+			}
+		}
+	}
 }
 
 void MotorTest(void)
