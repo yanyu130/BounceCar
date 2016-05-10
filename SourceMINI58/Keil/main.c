@@ -10,6 +10,7 @@
 *****************************************************************************/
 #include <stdio.h>
 
+
 #include "def.h"
 #include "ConfigTable.h"
 #include "led.h"
@@ -30,6 +31,7 @@
 #include "Report.h"
 #include "SleepCtrl.h"
 #include "Audio.h"
+
 
 void MotorTest(void);
 
@@ -60,19 +62,19 @@ void setup()
 {
 //	uint8_t i=0;
 	bool bMPU6050Status = TRUE;
+	
 	//初始化系统时钟
 	setupSystemClock();
+	//初始化System_tick
+	setup_system_tick(SYSTEM_TICK_FREQ);
 	
 	//初始化串口
 	setupUART();
 	UART_NVIC_INIT();
 
-	//初始化System_tick
-	setup_system_tick(SYSTEM_TICK_FREQ);
-	
 	//语音
 	Audio_Init();
-	//AudioSelect(2);
+
 	
 	//初始化LED
 	LED_Init();
@@ -188,7 +190,7 @@ void loop()
 			//UpdateLED();
 			UpdateLED();
 			
-			AudioSelect(2);
+			
 		}
 		
 		//故障保护
@@ -214,12 +216,6 @@ void loop()
 //				printf("Comm_Data%d,%d,%d,%d,%d\n",Comm_Data[0],Comm_Data[1],Comm_Data[2],Comm_Data[3],Comm_Data[4]);
 //			}
 		}
-//		if(GetFrameCount() >= 8000  && !falg)
-//		{
-//			falg = true;
-//			LED_OFF();
-//			IntoSleep();
-//		}
 		IncFrameCount(1);
 }
 
@@ -228,6 +224,7 @@ int main()
 {
 	//开机默认进入休眠
 	InitSleepIO();
+
 	
 	IntoSleep();	
 	
@@ -245,6 +242,7 @@ int main()
 				IntoSleep();
 				//printf("SLEEP");
 				PermitTonggleOperation = false;
+				
 			}
 			else
 			{
@@ -260,6 +258,7 @@ int main()
 				OPERTION_MODE = OPERATION;
 				//printf("OPERATION");
 				PermitTonggleOperation = false;
+				AudioSelect(WELCOME);
 			}
 			else if(PressIsOn == false)	//按键弹起时,按下的时间太短，再次进入休眠
 			{
@@ -303,5 +302,7 @@ void MotorTest(void)
 			Motor_Stop();
 		}
 }
+	
+
 
 /*** (C) COPYRIGHT ***/

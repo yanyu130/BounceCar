@@ -2,11 +2,13 @@
 #include "def.h"
 #include "Timer_Ctrl.h"
 #include "Led.h"
+#include "Audio.h"
+
 uint32_t LastPressTime;
 bool PressIsOn = false;
 bool PermitTonggleOperation = false;
 
-uint8_t OPERTION_MODE = SLEEP;
+uint8_t OPERTION_MODE = SLEEP;//SLEEP;
 
 void InitSleepIO(void)
 {
@@ -18,6 +20,7 @@ void InitSleepIO(void)
 void PrepareForWakeUp()
 {
 	LED_ON();
+	
 }
 
 void IntoSleep(void)

@@ -244,7 +244,7 @@ I (..\Library\StdDriver\inc\timer.h)(0x571B0A51)
 I (..\Library\StdDriver\inc\uart.h)(0x571B0A51)
 I (..\Library\StdDriver\inc\wdt.h)(0x571B0A51)
 I (..\Library\StdDriver\inc\wwdt.h)(0x571B0A51)
-F (.\main.c)(0x57317EB2)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
+F (.\main.c)(0x57318F2E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (def.h)(0x571B0A49)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -287,7 +287,7 @@ I (DMP.h)(0x571B0A49)
 I (FailSafe.h)(0x571B0A49)
 I (Report.h)(0x571B0A49)
 I (SleepCtrl.h)(0x572FFCA3)
-I (Audio.h)(0x57315A7D)
+I (Audio.h)(0x57318B89)
 F (.\LED.c)(0x57205DD1)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\led.o --omf_browse .\obj\led.crf --depend .\obj\led.d)
 I (LED.h)(0x571B0A4A)
 I (def.h)(0x571B0A49)
@@ -816,7 +816,7 @@ I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (PID.h)(0x5722FF77)
 I (Motor.h)(0x571B0A49)
 I (imu.h)(0x571B0A49)
-F (.\SleepCtrl.c)(0x572DBB12)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\sleepctrl.o --omf_browse .\obj\sleepctrl.crf --depend .\obj\sleepctrl.d)
+F (.\SleepCtrl.c)(0x57318E98)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\sleepctrl.o --omf_browse .\obj\sleepctrl.crf --depend .\obj\sleepctrl.d)
 I (SleepCtrl.h)(0x572FFCA3)
 I (def.h)(0x571B0A49)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -841,8 +841,9 @@ I (..\Library\StdDriver\inc\wwdt.h)(0x571B0A51)
 I (Timer_Ctrl.h)(0x572C6134)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (Led.h)(0x571B0A4A)
-F (.\Audio.c)(0x57317EBD)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\audio.o --omf_browse .\obj\audio.crf --depend .\obj\audio.d)
-I (Audio.h)(0x57315A7D)
+I (Audio.h)(0x57318B89)
+F (.\Audio.c)(0x57318B89)(-c --cpu Cortex-M0 -D__MICROLIB -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\audio.o --omf_browse .\obj\audio.crf --depend .\obj\audio.d)
+I (Audio.h)(0x57318B89)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
 I (Timer_Ctrl.h)(0x572C6134)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
