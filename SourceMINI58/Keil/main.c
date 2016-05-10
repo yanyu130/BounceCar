@@ -29,6 +29,7 @@
 #include "FailSafe.h"
 #include "Report.h"
 #include "SleepCtrl.h"
+#include "Audio.h"
 
 void MotorTest(void);
 
@@ -69,7 +70,9 @@ void setup()
 	//初始化System_tick
 	setup_system_tick(SYSTEM_TICK_FREQ);
 	
-	InitSleepIO();
+	//语音
+	Audio_Init();
+	//AudioSelect(2);
 	
 	//初始化LED
 	LED_Init();
@@ -131,7 +134,7 @@ void setup()
 
 void loop()
 {
-	static bool falg = false;
+//	static bool falg = false;
 		static uint32_t nextTick = 0;
 		while(getSystemTime()<nextTick){}
 		nextTick = getSystemTime()+TICK_FRAME_PERIOD;	//循环间隔FRAME
@@ -184,6 +187,8 @@ void loop()
 			//更新LED灯状态
 			//UpdateLED();
 			UpdateLED();
+			
+			AudioSelect(2);
 		}
 		
 		//故障保护
@@ -223,10 +228,11 @@ int main()
 {
 	//开机默认进入休眠
 	InitSleepIO();
+	
 	IntoSleep();	
 	
   setup();
-	while(TRUE) 
+	while(TRUE)
 	{
 		if(OPERTION_MODE == OPERATION)	//工作模式下
 		{
@@ -255,7 +261,7 @@ int main()
 				//printf("OPERATION");
 				PermitTonggleOperation = false;
 			}
-			else if(PressIsOn == false)	//按键弹起时，会唤醒，但不满足唤醒条件，需进入休眠
+			else if(PressIsOn == false)	//按键弹起时,按下的时间太短，再次进入休眠
 			{
 				//printf("SLEEP");
 				IntoSleep();

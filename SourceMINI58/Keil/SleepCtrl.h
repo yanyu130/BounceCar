@@ -15,6 +15,6 @@ void InitSleepIO(void);
 
 void IntoSleep(void);
 
-void PrepareForSleep();
+void PrepareForSleep(void);
 
 #endif

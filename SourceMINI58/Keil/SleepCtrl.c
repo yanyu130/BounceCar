@@ -17,7 +17,7 @@ void InitSleepIO(void)
 
 void PrepareForWakeUp()
 {
-	//LED_OFF();
+	LED_ON();
 }
 
 void IntoSleep(void)

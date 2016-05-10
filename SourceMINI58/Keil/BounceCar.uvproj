@@ -594,6 +594,11 @@
               <FileType>1</FileType>
               <FilePath>.\SleepCtrl.c</FilePath>
             </File>
+            <File>
+              <FileName>Audio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Audio.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
