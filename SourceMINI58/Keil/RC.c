@@ -33,7 +33,7 @@ void RC_CommandDetect(void)
 	{
 		command = 0x00;
 		Comm_Flag &= ~ Comm_NewData_Mask;
-		//printf("Comm_Data%02x,%02x,%02x,%02x,%02x\n",Comm_Data[0],Comm_Data[1],
+		//printf("Comm_Data %02x,%02x,%02x,%02x,%02x\n",Comm_Data[0],Comm_Data[1],
 		//	Comm_Data[2],Comm_Data[3],Comm_Data[4]);
 		command = Comm_Data[4];
 		

@@ -232,7 +232,7 @@ void SetHandstandMode()
 
 void SetNormalMode()
 {
-		TargetAngle = -33;
+		TargetAngle = -37;
 }
 
 void SetActionUsingTime(int8_t action,int32_t time,int8_t speed)

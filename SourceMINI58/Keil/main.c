@@ -31,7 +31,7 @@
 #include "Report.h"
 #include "SleepCtrl.h"
 #include "Audio.h"
-
+#include "jump.h"
 
 void MotorTest(void);
 
@@ -187,9 +187,9 @@ void loop()
 			
 			
 			//更新LED灯状态
-			//UpdateLED();
+		
 			UpdateLED();
-			
+			//AudioPlay(2);
 			
 		}
 		
@@ -204,7 +204,7 @@ void loop()
 			
 			//电池低电压处理
 			//printf("Convert result is %d\n", GetBatteryAD());
-
+			
 		}
 		
 		//打印调试信息
@@ -224,8 +224,6 @@ int main()
 {
 	//开机默认进入休眠
 	InitSleepIO();
-
-	
 	IntoSleep();	
 	
   setup();
@@ -239,6 +237,10 @@ int main()
 				&& (getSystemTime() - LastPressTime > WAKE_TIME))
 			{
 				OPERTION_MODE = SLEEP;
+				
+				AudioPlay(AUDIO_GOODBYE);
+				//DelayMsec(2000);	//延迟时间，播放音乐
+				
 				IntoSleep();
 				//printf("SLEEP");
 				PermitTonggleOperation = false;
@@ -258,7 +260,9 @@ int main()
 				OPERTION_MODE = OPERATION;
 				//printf("OPERATION");
 				PermitTonggleOperation = false;
-				AudioSelect(WELCOME);
+				
+				AudioPlay(AUDIO_WELCOME);
+				//DelayMsec(2000);	//延迟时间，播放音乐
 			}
 			else if(PressIsOn == false)	//按键弹起时,按下的时间太短，再次进入休眠
 			{

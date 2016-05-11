@@ -3,11 +3,10 @@
 
 #include "stdint.h"
 
-#define WELCOME 2
+#define AUDIO_WELCOME 2
+#define AUDIO_GOODBYE 3
 
 void Audio_Init(void);
-void AudioSelect(uint8_t i);
-
-
+void AudioPlay(uint8_t i);
 
 #endif

@@ -32,7 +32,7 @@ uint32_t getSystemTime(void)						//系统时间，单位ms
 
 void DelayMsec(uint16_t time)
 {
-	uint16_t currentTime = getSystemTime();
+	uint32_t currentTime = getSystemTime();
 	while(getSystemTime() < (currentTime + time));
 }
 
