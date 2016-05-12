@@ -17,12 +17,12 @@ uint8_t gParamsSaveEEPROMRequset=0;
  void ParamSetDefault(void)
 {
 		 
-     pitch_angle_PID.P = 2.3;		//4
+     pitch_angle_PID.P = 1.3;		//4
      pitch_angle_PID.I = 0;
      pitch_angle_PID.D = 0;
 	   pitch_angle_PID.iLimit = 30;	
 		 
-     pitch_rate_PID.P  = 3; //0.09
+     pitch_rate_PID.P  = 4; //0.09
      pitch_rate_PID.I  = 0; 		//9.5/8.9
      pitch_rate_PID.D  = 0.0;
 		 pitch_rate_PID.iLimit = 30;

@@ -599,6 +599,11 @@
               <FileType>1</FileType>
               <FilePath>.\Audio.c</FilePath>
             </File>
+            <File>
+              <FileName>jump.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\jump.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -7,7 +7,7 @@
 #include "UartCtrl.h"
 #include "stdlib.h"
 
-#define DEFAULT_ANGLE 79
+int16_t DEFAULT_ANGLE = 65;
 
 float fStabilityPError;
 float fStabilityDError;
@@ -23,9 +23,9 @@ int8_t DeadZone = 0;
 int8_t TurnRound = 0;
 
 int8_t Action = FORWARD;
-int8_t CarMode = HAND_STAND;
+int8_t CarMode = NORMAL;
 
-int16_t TargetAngle = DEFAULT_ANGLE;
+int16_t TargetAngle = 79;// = DEFAULT_ANGLE;
 
 ACTION currentAction;
 
@@ -221,13 +221,13 @@ void SetTargetAngle()
 	uint8_t value;
 	
 	value = GetIntValue();
-	TargetAngle = value;
+	DEFAULT_ANGLE = value;
 	
 }
 
 void SetHandstandMode()
 {
-		TargetAngle = 80;
+		TargetAngle = DEFAULT_ANGLE;
 }
 
 void SetNormalMode()

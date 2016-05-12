@@ -5,15 +5,24 @@
 #include "stdint.h"
 #include "PID.h"
 
-#define FORWARD 1
-#define BACKWARD 2
-#define CLOCK_WISE_LITTLE 4
-#define ANTICLOCK_WISE_LITTLE 8
-#define CLOCK_WISE_BIG 16
-#define ANTICLOCK_WISE_BIG 32
+#define FORWARD 11
+#define BACKWARD 16
 
-#define MODEL_NORMAL 0x40
+#define CLOCK_WISE_LITTLE 0x01
+#define ANTICLOCK_WISE_BIG 0x02
+#define MODEL_JUMP_MODE1 0x04
+#define CLOCK_WISE_BIG 0x08
+
+#define MODEL_JUMP_MODE2 0x10
+#define CLOCK_WISE_BIG_2S 0x20
 #define MODEL_HAND_UP 0x80
+//#define CLOCK_WISE_BIG_2S 0x20
+#define ANTICLOCK_WISE_LITTLE 0x40
+
+
+
+
+
 
 typedef struct _action
 {

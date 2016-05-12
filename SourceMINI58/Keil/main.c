@@ -124,13 +124,16 @@ void setup()
 
 	//初始化电机
 	Motor_Init();
-	//Motor_Start();
+	Motor_Start();
 
 	
 	//初始化自稳定
 	IMU_Init();			// sample rate and cutoff freq.  sample rate is too low now due to using dmp.
 	
 	//printf("\n\nCPU @ %dHz\n", SystemCoreClock);
+	
+	Jump_Init();
+
 
 }
 
@@ -146,6 +149,9 @@ void loop()
 			
 		//更新遥控状态
 		RC_Update();
+			
+		Jump_Sever();
+
 	
 		if(GetFrameCount()%10 == 0)
 		{
@@ -197,10 +203,10 @@ void loop()
 		if(GetFrameCount()%100 == 0)
 		{
 			//站立时，翻覆处理
-			 FailSafeCrash();
+		  //FailSafeCrash();
 			
 			//与遥控连接断开
-			FailSafeLostRC();
+			//FailSafeLostRC();
 			
 			//电池低电压处理
 			//printf("Convert result is %d\n", GetBatteryAD());
