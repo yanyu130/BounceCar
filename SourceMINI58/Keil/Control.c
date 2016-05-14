@@ -14,9 +14,9 @@ float fStabilityDError;
 
 float g_fSpeedControlIntegral = 0;
 
-//float g_Speed = 0;
+int8_t BasicSpeed=0;
 
-float BasicSpeed=45, Roll=0, Pitch=0, Yaw=0;
+float Roll=0, Pitch=0, Yaw=0;
 int16_t Motor[4]={0};   //定义电机PWM数组，分别对应M1-M4
 
 int8_t DeadZone = 0;
@@ -300,7 +300,8 @@ void DoActionLoop(uint8_t CarMode)	//单位：ms
 		}
 		else
 		{
-			MotorPwmOutput(0,0,0,0);
+			MotorPower(BasicSpeed, BasicSpeed);
+			//MotorPwmOutput(0,0,0,0);
 			//currentAction.actionType = ACTION_NONE;
 		}
 	}
@@ -395,4 +396,9 @@ void ActionHandle(uint8_t action,int8_t speed)
 		}
 		break;
 	}
+}
+
+void SetBasicSpeed(int8_t speed)
+{
+	BasicSpeed = speed;
 }

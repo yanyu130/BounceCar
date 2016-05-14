@@ -148,7 +148,8 @@ void loop()
 			
 		//更新遥控状态
 		RC_Update();
-			
+		
+		//弹跳状态处理
 		Jump_Sever();
 
 	
@@ -190,23 +191,19 @@ void loop()
 			//电池电池检测
 			//BatteryCheck();
 			
-			//遥控通信丢失处理
-			
+			//与遥控连接断开
+			//FailSafeLostRC();
 			
 			//更新LED灯状态
-		
 			UpdateLED();			
 		}
 		
-		//故障保护
+		//特殊处理
 		if(GetFrameCount()%100 == 0)
 		{
 			//站立时，翻覆处理
 		  //FailSafeCrash();
-			
-			//与遥控连接断开
-			//FailSafeLostRC();
-			
+
 			//电池低电压处理
 			//printf("Convert result is %d\n", GetBatteryAD());
 			
@@ -215,7 +212,7 @@ void loop()
 		//打印调试信息
 		if(GetFrameCount()%100 == 0)
 		{
-			ReportMessage();
+			//ReportMessage();
 //			if(Comm_Data && Comm_Data[4]>0)
 //			{
 //				printf("Comm_Data%d,%d,%d,%d,%d\n",Comm_Data[0],Comm_Data[1],Comm_Data[2],Comm_Data[3],Comm_Data[4]);

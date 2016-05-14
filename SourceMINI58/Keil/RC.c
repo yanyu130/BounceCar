@@ -32,16 +32,18 @@ void RC_Update(void)
 //遥控命令监测
 void RC_CommandDetect(void)
 {
-	uint8_t command1,command2;
+	uint8_t command1 = 0, command2 = 0, command3 = 0;
+	
 	//处理遥控数据
 	if(Comm_Flag&Comm_NewData_Mask)
 	{
 		command1 = 0x00;
 		Comm_Flag &= ~ Comm_NewData_Mask;
-		//printf("Comm_Data %02x,%02x,%02x,%02x,%02x\n",Comm_Data[0],Comm_Data[1],
-		//	Comm_Data[2],Comm_Data[3],Comm_Data[4]);
+		printf("Comm_Data %02x,%02x,%02x,%02x,%02x\n",Comm_Data[0],Comm_Data[1],
+			Comm_Data[2],Comm_Data[3],Comm_Data[4]);
 		command1 = Comm_Data[4];
 		command2 = Comm_Data[3];
+		command3 = Comm_Data[1];
 		
 		if(command1 == ACTION_CLOCK_WISE_BIG_2S)
 		{
@@ -121,6 +123,43 @@ void RC_CommandDetect(void)
 		if(command2 == 0)
 		{
 			command2_reset = true;
+		}
+		
+		if(command3 == 0x00)
+		{
+			SetBasicSpeed(BASIC_SPEED0);
+		}
+		else if(command3 == 0x01)
+		{
+			SetBasicSpeed(-BASIC_SPEED1);
+		}
+		else if(command3 == 0x02)
+		{
+			SetBasicSpeed(-BASIC_SPEED2);
+		}
+		else if(command3 == 0x03)
+		{
+			SetBasicSpeed(-BASIC_SPEED3);
+		}
+		else if(command3 == 0x04)
+		{
+			SetBasicSpeed(-BASIC_SPEED4);
+		}
+		else if(command3 == 0x10)
+		{
+			SetBasicSpeed(BASIC_SPEED1);
+		}
+		else if(command3 == 0x20)
+		{
+			SetBasicSpeed(BASIC_SPEED2);
+		}
+		else if(command3 == 0x30)
+		{
+			SetBasicSpeed(BASIC_SPEED3);
+		}
+		else if(command3 == 0x40)
+		{
+			SetBasicSpeed(BASIC_SPEED4);
 		}
 	}
 }

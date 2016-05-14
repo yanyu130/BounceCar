@@ -3,6 +3,7 @@
 #include "Timer_Ctrl.h"
 #include "Led.h"
 #include "Audio.h"
+#include "Motor.h"
 
 uint32_t LastPressTime;
 bool PressIsOn = false;
@@ -42,6 +43,7 @@ void CLK_Delay(uint16_t delay)
 void PrepareForSleep()
 {
 	LED_OFF();
+	//Motor_Stop();
 }
 
 

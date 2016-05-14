@@ -25,6 +25,11 @@
 //command2
 #define MODEL_HAND_UP 	0x01
 
+#define BASIC_SPEED0	0
+#define BASIC_SPEED1	15
+#define BASIC_SPEED2	20
+#define BASIC_SPEED3	25
+#define BASIC_SPEED4	30
 
 typedef struct _action
 {
@@ -62,5 +67,6 @@ void SetActionUsingAngle(uint8_t action,float angle,int8_t speed);
 void DoActionLoop(uint8_t CarMode);
 void ActionHandle2(uint8_t action, int8_t speed);
 void MotorPower(int16_t leftSpeed, int16_t rightSpeed);
+void SetBasicSpeed(int8_t Speed);
 
 #endif
