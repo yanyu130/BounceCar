@@ -125,8 +125,6 @@ void setup()
 	//初始化电机
 	Motor_Init();
 	Motor_Start();
-	//MotorPower(-100,-100);
-	//while(1);
 
 	
 	//初始化自稳定
@@ -176,11 +174,13 @@ void loop()
 				//平衡下控制电机
 				CtrlMotor();
 				
-				DoActionUsingTime(HAND_STAND);
+				//处理动作
+				DoActionLoop(HAND_STAND);
 			}
 			else
 			{
-				DoActionUsingTime(NORMAL);
+				//处理动作
+				DoActionLoop(NORMAL);
 			}
 
 		}

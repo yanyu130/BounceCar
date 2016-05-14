@@ -43,37 +43,37 @@ void RC_CommandDetect(void)
 		command1 = Comm_Data[4];
 		command2 = Comm_Data[3];
 		
-		if(command1 == CLOCK_WISE_BIG_2S)
+		if(command1 == ACTION_CLOCK_WISE_BIG_2S)
 		{
-			SetActionUsingTime(ANTICLOCK_WISE_BIG,2000,60);
+			SetActionUsingTime(ACTION_ANTICLOCK_WISE_BIG,2000,60);
 		}
-		else if(command1 & ANTICLOCK_WISE_LITTLE)
+		else if(command1 & ACTION_ANTICLOCK_WISE_LITTLE)
 		{
-			RC_DATA.COMMAND = ANTICLOCK_WISE_LITTLE;
-			SetActionUsingTime(ANTICLOCK_WISE_BIG,100,30);
+			RC_DATA.COMMAND = ACTION_ANTICLOCK_WISE_LITTLE;
+			SetActionUsingTime(ACTION_ANTICLOCK_WISE_BIG,100,30);
 		}
-		else if(command1 & CLOCK_WISE_LITTLE)
+		else if(command1 & ACTION_CLOCK_WISE_LITTLE)
 		{
-			RC_DATA.COMMAND = CLOCK_WISE_LITTLE;
-			SetActionUsingTime(CLOCK_WISE_LITTLE,100,30);
+			RC_DATA.COMMAND = ACTION_CLOCK_WISE_LITTLE;
+			SetActionUsingTime(ACTION_CLOCK_WISE_LITTLE,100,30);
 		}
-		else if(command1 & ANTICLOCK_WISE_BIG)
+		else if(command1 & ACTION_ANTICLOCK_WISE_BIG)
 		{
-			RC_DATA.COMMAND = ANTICLOCK_WISE_BIG;
-			SetActionUsingTime(ANTICLOCK_WISE_BIG,200,60);
+			RC_DATA.COMMAND = ACTION_ANTICLOCK_WISE_BIG;
+			SetActionUsingTime(ACTION_ANTICLOCK_WISE_BIG,200,60);
 		}
-		else if(command1 & CLOCK_WISE_BIG)
+		else if(command1 & ACTION_CLOCK_WISE_BIG)
 		{
-			RC_DATA.COMMAND = CLOCK_WISE_BIG;
-			SetActionUsingTime(CLOCK_WISE_BIG,200,60);
+			RC_DATA.COMMAND = ACTION_CLOCK_WISE_BIG;
+			SetActionUsingTime(ACTION_CLOCK_WISE_BIG,200,60);
 		}
-		else if(command1 & MODEL_JUMP_MODE1)
+		else if(command1 & ACTION_MODEL_JUMP_MODE1)
 		{
 			Jump(Mode1);
 		}
-		else if(command1 & ROLL_180)
+		else if(command1 & ACTION_ROLL_180)
 		{
-			RC_DATA.COMMAND = ROLL_180;
+			RC_DATA.COMMAND = ACTION_ROLL_180;
 			//退出倒立模式
 			if(CarMode == HAND_STAND) CarMode = NORMAL;
 			
@@ -82,16 +82,16 @@ void RC_CommandDetect(void)
 				command1_reset = false;
 				if(imu.pitch < 30)
 				{
-					SetActionUsingAngle(ROLL_180,200,100);
+					SetActionUsingAngle(ACTION_ROLL_180,200,100);
 				}
 				else
 				{
-					SetActionUsingAngle(ROLL_180,-30,100);
+					SetActionUsingAngle(ACTION_ROLL_180,-30,100);
 				}
 			}
 			
 		}
-		else if(command1 & MODEL_JUMP_MODE2)
+		else if(command1 & ACTION_MODEL_JUMP_MODE2)
 		{
 			Jump(Mode2);
 		}
@@ -100,7 +100,7 @@ void RC_CommandDetect(void)
 			command1_reset = true;
 		}
 		
-		if(command2 & MODEL_HAND_UP)
+		if(command2 == MODEL_HAND_UP)
 		{
 			if(command2_reset)
 			{

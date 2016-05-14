@@ -156,19 +156,19 @@ void CommandProcess(void)
 					mode = GetUartChar();
 					if (mode == 'f')
 					{
-						ActionHandle(FORWARD,40);
+						ActionHandle(ACTION_FORWARD,40);
 					}
 					else if (mode == 'b')
 					{
-						ActionHandle(BACKWARD,40);
+						ActionHandle(ACTION_BACKWARD,40);
 					}
 					else if (mode == 'c')
 					{
-						ActionHandle(CLOCK_WISE_LITTLE,40);
+						ActionHandle(ACTION_CLOCK_WISE_LITTLE,40);
 					}
 					else if (mode == 'a')
 					{
-						ActionHandle(ANTICLOCK_WISE_LITTLE,40);
+						ActionHandle(ACTION_ANTICLOCK_WISE_LITTLE,40);
 					}
 			}
 			else if(command == 'v')	//Check 'v'ersion

@@ -22,7 +22,7 @@ int16_t Motor[4]={0};   //定义电机PWM数组，分别对应M1-M4
 int8_t DeadZone = 0;
 int8_t TurnRound = 0;
 
-uint8_t Action = FORWARD;
+uint8_t Action = ACTION_FORWARD;
 int8_t CarMode = NORMAL;
 
 float TargetAngle = 65;// = DEFAULT_ANGLE;
@@ -247,9 +247,9 @@ void SetActionUsingAngle(uint8_t action,float angle,int8_t speed)
 	currentAction.targetAngle = angle;
 }
 
-void DoActionUsingTime(uint8_t CarMode)	//单位：ms
+void DoActionLoop(uint8_t CarMode)	//单位：ms
 {
-	if(getSystemTime() <= currentAction.stopTime)
+	if(getSystemTime() <= currentAction.stopTime)	//时间结束时
 	{
 		if(CarMode == HAND_STAND)
 		{
@@ -260,38 +260,39 @@ void DoActionUsingTime(uint8_t CarMode)	//单位：ms
 			ActionHandle(currentAction.actionType, currentAction.speed);
 		}
 	}
-	else if(currentAction.actionType ==  ROLL_180)	//翻滚180度
+	else if(currentAction.actionType ==  ACTION_ROLL_180)	//翻滚180度
 	{
+		//车的俯仰角度大于90时
 		if(currentAction.targetAngle > 90)
 		{
-			if(imu.pitch < currentAction.targetAngle-30)	//
+			if(imu.pitch < currentAction.targetAngle-30)	//未达到目标角度时，-30是惯性处理
 			{
 				ActionHandle(currentAction.actionType, currentAction.speed);
-				printf("pitch = %d\n",(int)imu.pitch);
+				//printf("pitch = %d\n",(int)imu.pitch);
 			}
 			else
 			{
 				currentAction.actionType = ACTION_NONE;
-				printf("finish\n");
+				//printf("finish\n");
 			}
 		}
 		else
 		{
-			if(imu.pitch > currentAction.targetAngle+30)	//
+			if(imu.pitch > currentAction.targetAngle+30)	//未达到目标角度时，+30是惯性处理
 			{
 				ActionHandle(currentAction.actionType, -currentAction.speed);
-				printf("pitch = %d\n",(int)imu.pitch);
+				//printf("pitch = %d\n",(int)imu.pitch);
 			}
 			else
 			{
 				currentAction.actionType = ACTION_NONE;
-				printf("finish\n");
+				//printf("finish\n");
 			}
 		}
 		
 	}
-	else
-	{
+	else	//无动作时
+	{	
 		if(CarMode == HAND_STAND)
 		{
 			TurnRound = 0;
@@ -315,34 +316,34 @@ void ActionHandle2(uint8_t action,int8_t speed)
 //		{
 //			MotorPwmOutput(0,0,0,0);
 //		}
-		case FORWARD:
+		case ACTION_FORWARD:
 		{
 			MotorPower(speed,speed);
 		}
 		break;
-		case BACKWARD:
+		case ACTION_BACKWARD:
 		{
 			MotorPower(-speed,-speed);
 		}
 		break;
-		case CLOCK_WISE_LITTLE:	//顺时针
+		case ACTION_CLOCK_WISE_LITTLE:	//顺时针
 		{
 			TurnRound = 40;
 			//MotorPower(speed,-speed);
 		}
 		break;
-		case ANTICLOCK_WISE_LITTLE:	//逆时针
+		case ACTION_ANTICLOCK_WISE_LITTLE:	//逆时针
 		{
 			TurnRound = -40;
 			//MotorPower(-speed,speed);
 		}
-		case CLOCK_WISE_BIG:	//顺时针
+		case ACTION_CLOCK_WISE_BIG:	//顺时针
 		{
 			TurnRound = 60;
 			//MotorPower(speed,-speed);
 		}
 		break;
-		case ANTICLOCK_WISE_BIG:	//逆时针
+		case ACTION_ANTICLOCK_WISE_BIG:	//逆时针
 		{
 			TurnRound = -60;
 			//MotorPower(-speed,speed);
@@ -359,36 +360,36 @@ void ActionHandle(uint8_t action,int8_t speed)
 //		{
 //			MotorPwmOutput(0,0,0,0);
 //		}
-		case FORWARD:
+		case ACTION_FORWARD:
 		{
 			MotorPower(speed,speed);
 		}
 		break;
-		case BACKWARD:
+		case ACTION_BACKWARD:
 		{
 			MotorPower(-speed,-speed);
 		}
 		break;
-		case CLOCK_WISE_LITTLE:	//顺时针
+		case ACTION_CLOCK_WISE_LITTLE:	//顺时针
 		{
 			MotorPower(speed,-speed);
 		}
 		break;
-		case ANTICLOCK_WISE_LITTLE:	//逆时针
+		case ACTION_ANTICLOCK_WISE_LITTLE:	//逆时针
 		{
 			MotorPower(-speed,speed);
 		}
-		case CLOCK_WISE_BIG:	//顺时针
+		case ACTION_CLOCK_WISE_BIG:	//顺时针
 		{
 			MotorPower(speed,-speed);
 		}
 		break;
-		case ANTICLOCK_WISE_BIG:	//逆时针
+		case ACTION_ANTICLOCK_WISE_BIG:	//逆时针
 		{
 			MotorPower(-speed,speed);
 		}
 		break;
-		case ROLL_180:	//逆时针
+		case ACTION_ROLL_180:	//翻滚180
 		{
 			MotorPower(-speed,-speed);
 		}
