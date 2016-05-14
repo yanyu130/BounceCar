@@ -7,7 +7,7 @@
 #include "UartCtrl.h"
 #include "stdlib.h"
 
-int16_t DEFAULT_ANGLE = 65;
+float DEFAULT_ANGLE = 65;
 
 float fStabilityPError;
 float fStabilityDError;
@@ -22,10 +22,10 @@ int16_t Motor[4]={0};   //定义电机PWM数组，分别对应M1-M4
 int8_t DeadZone = 0;
 int8_t TurnRound = 0;
 
-int8_t Action = FORWARD;
+uint8_t Action = FORWARD;
 int8_t CarMode = NORMAL;
 
-int16_t TargetAngle = 79;// = DEFAULT_ANGLE;
+float TargetAngle = 65;// = DEFAULT_ANGLE;
 
 ACTION currentAction;
 
@@ -159,12 +159,10 @@ void MotorPower(int16_t leftSpeed, int16_t rightSpeed)
 		if(leftSpeed > 0 && rightSpeed > 0)
 		{
 			TurnForward(leftSpeed,rightSpeed);		//forward
-			//MotorPwmOutput(0,leftPWM,0,rightPWM);
 		}
 		else if(leftSpeed <= 0 && rightSpeed <= 0)
 		{
 			TurnBackward(-leftSpeed,-rightSpeed);		//backward
-			//MotorPwmOutput(leftPWM,0,rightPWM,0);
 		}
 		else if(leftSpeed > 0 && rightSpeed <= 0)
 		{
@@ -182,7 +180,6 @@ void CtrlMotor(void)
 
 	if(CarMode == HAND_STAND)
 	{
-		//Pitch = Pitch - g_Speed;
 		if(Pitch > 0)
 		{
 			leftSpeed = Pitch + DeadZone;
@@ -218,9 +215,10 @@ int GetIntValue()
 
 void SetTargetAngle()
 {
-	uint8_t value;
+	float value;
 	
-	value = GetIntValue();
+	//value = GetIntValue();
+	value = GetPIDfloat();
 	DEFAULT_ANGLE = value;
 	
 }
@@ -235,40 +233,81 @@ void SetNormalMode()
 		TargetAngle = -37;
 }
 
-void SetActionUsingTime(int8_t action,int32_t time,int8_t speed)
+void SetActionUsingTime(uint8_t action,int32_t time,int8_t speed)
 {
 	currentAction.actionType = action;
 	currentAction.stopTime = getSystemTime() + time;
 	currentAction.speed = speed;
 }
 
-void DoActionUsingTime()	//time(ms)
+void SetActionUsingAngle(uint8_t action,float angle,int8_t speed)
 {
-	if(getSystemTime() <= currentAction.stopTime)
-	{
-		ActionHandle(currentAction.actionType, currentAction.speed);
-	}
-	else
-	{
-			MotorPwmOutput(0,0,0,0);
-	}
+	currentAction.actionType = action;
+	currentAction.speed = speed;
+	currentAction.targetAngle = angle;
 }
 
-void DoActionUsingTime2()	//time(ms)
+void DoActionUsingTime(uint8_t CarMode)	//单位：ms
 {
 	if(getSystemTime() <= currentAction.stopTime)
 	{
-		ActionHandle2(currentAction.actionType, currentAction.speed);
+		if(CarMode == HAND_STAND)
+		{
+			ActionHandle2(currentAction.actionType, currentAction.speed);
+		}
+		else
+		{
+			ActionHandle(currentAction.actionType, currentAction.speed);
+		}
+	}
+	else if(currentAction.actionType ==  ROLL_180)	//翻滚180度
+	{
+		if(currentAction.targetAngle > 90)
+		{
+			if(imu.pitch < currentAction.targetAngle-30)	//
+			{
+				ActionHandle(currentAction.actionType, currentAction.speed);
+				printf("pitch = %d\n",(int)imu.pitch);
+			}
+			else
+			{
+				currentAction.actionType = ACTION_NONE;
+				printf("finish\n");
+			}
+		}
+		else
+		{
+			if(imu.pitch > currentAction.targetAngle+30)	//
+			{
+				ActionHandle(currentAction.actionType, -currentAction.speed);
+				printf("pitch = %d\n",(int)imu.pitch);
+			}
+			else
+			{
+				currentAction.actionType = ACTION_NONE;
+				printf("finish\n");
+			}
+		}
+		
 	}
 	else
 	{
+		if(CarMode == HAND_STAND)
+		{
 			TurnRound = 0;
 			TargetAngle = DEFAULT_ANGLE;
+		}
+		else
+		{
+			MotorPwmOutput(0,0,0,0);
+			//currentAction.actionType = ACTION_NONE;
+		}
 	}
 }
 
 
-void ActionHandle2(int8_t action,int8_t speed)
+
+void ActionHandle2(uint8_t action,int8_t speed)
 {
 	switch(action)
 	{
@@ -312,7 +351,7 @@ void ActionHandle2(int8_t action,int8_t speed)
 	}
 }
 
-void ActionHandle(int8_t action,int8_t speed)
+void ActionHandle(uint8_t action,int8_t speed)
 {
 	switch(action)
 	{
@@ -347,6 +386,11 @@ void ActionHandle(int8_t action,int8_t speed)
 		case ANTICLOCK_WISE_BIG:	//逆时针
 		{
 			MotorPower(-speed,speed);
+		}
+		break;
+		case ROLL_180:	//逆时针
+		{
+			MotorPower(-speed,-speed);
 		}
 		break;
 	}

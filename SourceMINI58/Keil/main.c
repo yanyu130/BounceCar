@@ -125,6 +125,8 @@ void setup()
 	//初始化电机
 	Motor_Init();
 	Motor_Start();
+	//MotorPower(-100,-100);
+	//while(1);
 
 	
 	//初始化自稳定
@@ -132,9 +134,8 @@ void setup()
 	
 	//printf("\n\nCPU @ %dHz\n", SystemCoreClock);
 	
+	//初始化弹跳功能
 	Jump_Init();
-
-
 }
 
 void loop()
@@ -172,14 +173,14 @@ void loop()
 			{
 				//平衡站立
 				CtrlAttiAng();
-				//控制电机
+				//平衡下控制电机
 				CtrlMotor();
 				
-				DoActionUsingTime2();
+				DoActionUsingTime(HAND_STAND);
 			}
 			else
 			{
-				DoActionUsingTime();
+				DoActionUsingTime(NORMAL);
 			}
 
 		}
@@ -194,9 +195,7 @@ void loop()
 			
 			//更新LED灯状态
 		
-			UpdateLED();
-			//AudioPlay(2);
-			
+			UpdateLED();			
 		}
 		
 		//故障保护
@@ -245,7 +244,6 @@ int main()
 				OPERTION_MODE = SLEEP;
 				
 				AudioPlay(AUDIO_GOODBYE);
-				//DelayMsec(2000);	//延迟时间，播放音乐
 				
 				IntoSleep();
 				//printf("SLEEP");
@@ -268,13 +266,11 @@ int main()
 				PermitTonggleOperation = false;
 				
 				AudioPlay(AUDIO_WELCOME);
-				//DelayMsec(2000);	//延迟时间，播放音乐
 			}
 			else if(PressIsOn == false)	//按键弹起时,按下的时间太短，再次进入休眠
 			{
 				//printf("SLEEP");
 				IntoSleep();
-				
 			}
 		}
 	}

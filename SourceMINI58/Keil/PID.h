@@ -41,4 +41,5 @@ void GetPitchRatePID(float* pid);
 void GetRollRatePID(float* pid);
 void GetYawRatePID(float* pid);
 void SetPID(void);
+float GetPIDfloat(void);
 #endif
