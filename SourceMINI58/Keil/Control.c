@@ -7,7 +7,17 @@
 #include "UartCtrl.h"
 #include "stdlib.h"
 
-float DEFAULT_ANGLE = 65;
+PID_Typedef pitch_angle_PID;	//pitch角度环的PID
+PID_Typedef pitch_rate_PID;		//pitch角速率环的PID
+
+PID_Typedef speed_angle_PID;   //speed角度环的PID
+PID_Typedef roll_rate_PID;    //roll角速率环的PID
+
+PID_Typedef yaw_angle_PID;    //yaw角度环的PID 
+PID_Typedef yaw_rate_PID;     //yaw角速率环的PID
+
+#define DEFAULT_ANGLE  80
+float TargetAngle = 80;// = DEFAULT_ANGLE;
 
 float fStabilityPError;
 float fStabilityDError;
@@ -25,7 +35,7 @@ int8_t TurnRound = 0;
 uint8_t Action = ACTION_FORWARD;
 int8_t CarMode = NORMAL;
 
-float TargetAngle = 65;// = DEFAULT_ANGLE;
+uint8_t handup_ready = false;
 
 ACTION currentAction;
 
@@ -61,8 +71,18 @@ float stabilityPDControl(float inputAngle, float setAnglePoint, float inputAngle
 
 void CtrlAttiAng(void)
 {
-		Pitch = stabilityPDControl(imu.pitch, TargetAngle, -imu.gyro[PITCH],0,
-										pitch_angle_PID.P,pitch_rate_PID.P);
+	//	Pitch = stabilityPDControl(imu.pitch, TargetAngle, -imu.gyro[PITCH],0,
+	//									pitch_angle_PID.P,pitch_rate_PID.P);
+
+	static uint32_t tPrev=0; 
+
+	float dt=0,t=0;
+	t=getSystemTime();
+	dt=(tPrev>0)?(t-tPrev):0;
+	tPrev=t;
+
+	PID_Postion_Cal(&pitch_angle_PID,TargetAngle,imu.pitch,dt);	
+	Pitch = pitch_rate_PID.Output;
 }
 
 //速度控制函数
@@ -219,19 +239,19 @@ void SetTargetAngle()
 	
 	//value = GetIntValue();
 	value = GetPIDfloat();
-	DEFAULT_ANGLE = value;
+	TargetAngle = value;
 	
 }
 
-void SetHandstandMode()
-{
-		TargetAngle = DEFAULT_ANGLE;
-}
+//void SetHandstandMode()
+//{
+//		TargetAngle = DEFAULT_ANGLE;
+//}
 
-void SetNormalMode()
-{
-		TargetAngle = -37;
-}
+//void SetNormalMode()
+//{
+//		TargetAngle = -37;
+//}
 
 void SetActionUsingTime(uint8_t action,int32_t time,int8_t speed)
 {
@@ -249,6 +269,7 @@ void SetActionUsingAngle(uint8_t action,float angle,int8_t speed)
 
 void DoActionLoop(uint8_t CarMode)	//单位：ms
 {
+	//有动作时
 	if(getSystemTime() <= currentAction.stopTime)	//时间结束时
 	{
 		if(CarMode == HAND_STAND)
@@ -297,9 +318,22 @@ void DoActionLoop(uint8_t CarMode)	//单位：ms
 		{
 			TurnRound = 0;
 			TargetAngle = DEFAULT_ANGLE;
+			
+			//小车的俯仰角进入目标区间，直立算法可以做积分
+			if((imu.pitch >= (TargetAngle-10)) && (imu.pitch <= (TargetAngle+10)) )
+			{
+				handup_ready = true;
+				//printf("handup_ready = true \n");
+			}
+			else if((imu.pitch >= 160) || (imu.pitch <= 0))
+			{
+				handup_ready = false;
+				//printf("handup_ready = false \n");
+			}
 		}
 		else
 		{
+			handup_ready = false;
 			MotorPower(BasicSpeed, BasicSpeed);
 			//MotorPwmOutput(0,0,0,0);
 			//currentAction.actionType = ACTION_NONE;

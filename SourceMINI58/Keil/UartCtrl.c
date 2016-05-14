@@ -142,14 +142,14 @@ void CommandProcess(void)
 						//stream_mode = STREAM_PAUSE;
 						Motor_Stop();
 					}
-					else if (mode == 'h') //'H'andstandMode	倒立
-					{
-						SetHandstandMode();
-					}
-					else if (mode == 'n') //'N'ormalMode	正常
-					{
-						SetNormalMode();
-					}
+//					else if (mode == 'h') //'H'andstandMode	倒立
+//					{
+//						SetHandstandMode();
+//					}
+//					else if (mode == 'n') //'N'ormalMode	正常
+//					{
+//						SetNormalMode();
+//					}
 			}
 			if (command == 'a')
 			{

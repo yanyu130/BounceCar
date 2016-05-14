@@ -3,7 +3,7 @@
 #include "uart.h"
 #include "FlashCtrl.h"
 #include "stdio.h"
-#include "PID.h"
+#include "control.h"
 
 #define TABLE_ADDRESS 	DATA_Flash_Start_ADD
 //用来存放Flash列表上的存放的参数变量的信息

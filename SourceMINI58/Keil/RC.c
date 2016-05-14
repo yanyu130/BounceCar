@@ -39,15 +39,19 @@ void RC_CommandDetect(void)
 	{
 		command1 = 0x00;
 		Comm_Flag &= ~ Comm_NewData_Mask;
-		printf("Comm_Data %02x,%02x,%02x,%02x,%02x\n",Comm_Data[0],Comm_Data[1],
-			Comm_Data[2],Comm_Data[3],Comm_Data[4]);
+		//printf("Comm_Data %02x,%02x,%02x,%02x,%02x\n",Comm_Data[0],Comm_Data[1],
+		//	Comm_Data[2],Comm_Data[3],Comm_Data[4]);
 		command1 = Comm_Data[4];
 		command2 = Comm_Data[3];
 		command3 = Comm_Data[1];
 		
 		if(command1 == ACTION_CLOCK_WISE_BIG_2S)
 		{
-			SetActionUsingTime(ACTION_ANTICLOCK_WISE_BIG,2000,60);
+			if(command1_reset)
+			{
+				command1_reset = false;
+				SetActionUsingTime(ACTION_ANTICLOCK_WISE_BIG,2000,60);
+			}
 		}
 		else if(command1 & ACTION_ANTICLOCK_WISE_LITTLE)
 		{
@@ -61,13 +65,21 @@ void RC_CommandDetect(void)
 		}
 		else if(command1 & ACTION_ANTICLOCK_WISE_BIG)
 		{
-			RC_DATA.COMMAND = ACTION_ANTICLOCK_WISE_BIG;
-			SetActionUsingTime(ACTION_ANTICLOCK_WISE_BIG,200,60);
+			if(command1_reset)
+			{
+				command1_reset = false;
+				RC_DATA.COMMAND = ACTION_ANTICLOCK_WISE_BIG;
+				SetActionUsingTime(ACTION_ANTICLOCK_WISE_BIG,200,60);
+			}
 		}
 		else if(command1 & ACTION_CLOCK_WISE_BIG)
 		{
-			RC_DATA.COMMAND = ACTION_CLOCK_WISE_BIG;
-			SetActionUsingTime(ACTION_CLOCK_WISE_BIG,200,60);
+			if(command1_reset)
+			{
+				command1_reset = false;
+				RC_DATA.COMMAND = ACTION_CLOCK_WISE_BIG;
+				SetActionUsingTime(ACTION_CLOCK_WISE_BIG,200,60);
+			}
 		}
 		else if(command1 & ACTION_MODEL_JUMP_MODE1)
 		{
@@ -97,6 +109,8 @@ void RC_CommandDetect(void)
 		{
 			Jump(Mode2);
 		}
+		
+		//按键释放
 		if(command1 == 0)
 		{
 			command1_reset = true;
@@ -120,6 +134,7 @@ void RC_CommandDetect(void)
 			}
 		}
 		
+		//按键释放
 		if(command2 == 0)
 		{
 			command2_reset = true;
@@ -161,5 +176,6 @@ void RC_CommandDetect(void)
 		{
 			SetBasicSpeed(BASIC_SPEED4);
 		}
+		
 	}
 }

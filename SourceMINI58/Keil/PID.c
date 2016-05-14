@@ -2,15 +2,8 @@
 #include "def.h"
 #include "UartCtrl.h"
 #include "stdlib.h"
+#include "control.h"
 
-PID_Typedef pitch_angle_PID;	//pitch角度环的PID
-PID_Typedef pitch_rate_PID;		//pitch角速率环的PID
-
-PID_Typedef speed_angle_PID;   //speed角度环的PID
-PID_Typedef roll_rate_PID;    //roll角速率环的PID
-
-PID_Typedef yaw_angle_PID;    //yaw角度环的PID 
-PID_Typedef yaw_rate_PID;     //yaw角速率环的PID
 
 void GetRollAnglePID(float* pid)
 {
@@ -71,16 +64,18 @@ void PID_Postion_Cal(PID_Typedef * PID,float target,float measure,int32_t dertT)
 	//仅用于角度环和角速度环的
 
 	//if(FLY_ENABLE && offLandFlag)
+	if(handup_ready)
 	{
-			//if(fabs(PID->Output) < Thro )		              //比油门还大时不积分
 			{
 				termI=(PID->Integ) + (PID->Error) * dt;     //积分环节
 				if(termI > - PID->iLimit && termI < PID->iLimit && PID->Output > - PID->iLimit && PID->Output < PID->iLimit)       //在-30~30时才进行积分环节
 					PID->Integ=termI;
 			}
 	}
-//	else
-//			PID->Integ= 0;
+	else
+	{
+			PID->Integ= 0;
+	}
 }
 
 float GetPIDfloat()

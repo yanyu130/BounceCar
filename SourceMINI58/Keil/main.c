@@ -154,7 +154,7 @@ void loop()
 
 	
 		if(GetFrameCount()%10 == 0)
-		{
+		{			
 			//读取姿态传感器数据
 			#ifdef IMU_SW												//软件姿态解算
 				IMUSO3Thread();
@@ -212,7 +212,7 @@ void loop()
 		//打印调试信息
 		if(GetFrameCount()%100 == 0)
 		{
-			//ReportMessage();
+			ReportMessage();
 //			if(Comm_Data && Comm_Data[4]>0)
 //			{
 //				printf("Comm_Data%d,%d,%d,%d,%d\n",Comm_Data[0],Comm_Data[1],Comm_Data[2],Comm_Data[3],Comm_Data[4]);
