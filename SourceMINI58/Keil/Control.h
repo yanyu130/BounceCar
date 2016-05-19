@@ -10,14 +10,14 @@
 #define ACTION_BACKWARD 0x05
 
 //command1
-#define ACTION_CLOCK_WISE_LITTLE 0x01
+#define ACTION_CLOCK_WISE_LITTLE 0x40
 #define ACTION_ANTICLOCK_WISE_BIG 0x02
 #define ACTION_MODEL_JUMP_MODE1 0x04
 #define ACTION_CLOCK_WISE_BIG 0x08
 
 #define ACTION_MODEL_JUMP_MODE2 0x10
 #define ACTION_CLOCK_WISE_BIG_2S 0x20			//大幅度顺时针
-#define ACTION_ANTICLOCK_WISE_LITTLE 0x40	//小幅度逆时针
+#define ACTION_ANTICLOCK_WISE_LITTLE 0x01	//小幅度逆时针
 #define ACTION_ROLL_180 							0x80	//翻转180度
 
 //command2
@@ -77,5 +77,6 @@ void DoActionLoop(uint8_t CarMode);
 void ActionHandle2(uint8_t action, int8_t speed);
 void MotorPower(int16_t leftSpeed, int16_t rightSpeed);
 void SetBasicSpeed(int8_t Speed);
-
+void CtrlAttiSpeed(void);
+float limitValue(float value,float min, float max);
 #endif

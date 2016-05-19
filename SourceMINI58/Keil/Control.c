@@ -16,13 +16,16 @@ PID_Typedef roll_rate_PID;    //roll角速率环的PID
 PID_Typedef yaw_angle_PID;    //yaw角度环的PID 
 PID_Typedef yaw_rate_PID;     //yaw角速率环的PID
 
-#define DEFAULT_ANGLE  80
-float TargetAngle = 80;// = DEFAULT_ANGLE;
+float DEFAULT_ANGLE   = 63.5;
+float TargetAngle = 63.5;// = DEFAULT_ANGLE;
 
 float fStabilityPError;
 float fStabilityDError;
 
 float g_fSpeedControlIntegral = 0;
+float g_fSpeedControl = 0;
+
+float g_fCarSpeed = 0;
 
 int8_t BasicSpeed=0;
 
@@ -50,9 +53,16 @@ typedef struct float_xyz
 
 S_FLOAT_XYZ DIF_ACC;		//实际去期望相差的加速度
 
+float limitValue(float value,float min, float max)
+{
+	float output = value;
+	if(value > max)	output = max;
+	else if(value <min)	output = min;
+	return output;
+}
 
-//控制平衡站立PID算法
-float stabilityPDControl(float inputAngle, float setAnglePoint, float inputAngleSpeed, float setAngleSpeedPoint, float Kp, float Kd)
+//控制平衡站立PD算法
+float stabilityPDControl(float inputAngle, float setAnglePoint, float inputAngleSpeed, float setAngleSpeedPoint, PID_Typedef * PID)
 {
   float errorAngle;
   float errorAngleSpeed;
@@ -62,61 +72,128 @@ float stabilityPDControl(float inputAngle, float setAnglePoint, float inputAngle
   errorAngle = inputAngle - setAnglePoint;
   errorAngleSpeed = inputAngleSpeed - setAngleSpeedPoint;
 
-  fStabilityPError = Kp*errorAngle;
-  fStabilityDError = Kd*errorAngleSpeed;
-  output = Kp*errorAngle + Kd*errorAngleSpeed;//(Kd*(setPoint - setPointOld) - Kd*(input - PID_errorOld2))/DT;       // + error - PID_error_Old2
+  fStabilityPError = PID->P * errorAngle;
+  fStabilityDError = PID->D * errorAngleSpeed;
+	
+  output = PID->P*errorAngle + PID->D*errorAngleSpeed;
 
+  return(output);
+}
+//控制平衡站立PID算法
+float stabilityPIDControl(float ActualAngle, float TargetAngle, PID_Typedef * PID)
+{
+  float error;
+  float output;
+
+  error = TargetAngle - ActualAngle;
+	PID->Integ += error;
+  output = PID->P*error + PID->I*PID->Integ + PID->D*(error-PID->PreError);
+	PID->PreError = error;
   return(output);
 }
 
 void CtrlAttiAng(void)
-{
-	//	Pitch = stabilityPDControl(imu.pitch, TargetAngle, -imu.gyro[PITCH],0,
-	//									pitch_angle_PID.P,pitch_rate_PID.P);
+{ 
+		//Pitch = stabilityPDControl(imu.pitch, TargetAngle, -imu.gyro[PITCH],0,
+		//								&pitch_angle_PID);
+	Pitch = -stabilityPIDControl(imu.pitch, TargetAngle,&pitch_angle_PID);
+		
+//	static uint32_t tPrev=0; 
 
-	static uint32_t tPrev=0; 
+//	float dt=0,t=0;
+//	t=getSystemTime();
+//	dt=(tPrev>0)?(t-tPrev):0;
+//	tPrev=t;
 
-	float dt=0,t=0;
-	t=getSystemTime();
-	dt=(tPrev>0)?(t-tPrev):0;
-	tPrev=t;
-
-	PID_Postion_Cal(&pitch_angle_PID,TargetAngle,imu.pitch,dt);	
-	Pitch = pitch_rate_PID.Output;
+//	PID_Postion_Cal(&pitch_angle_PID,TargetAngle,imu.pitch,dt);	
+//	Pitch = pitch_angle_PID.Output;
 }
 
 //速度控制函数
-//float SpeedPIControl(int8_t Angle, int8_t nTargetAngle)
+//float SpeedPIControl(float Angle, float nTargetAngle, PID_Typedef * PID)
 //{
 //  float fDelta;
 //  float fP, fI;
 //  float output;
 //  
 //  
-//  fDelta = nTargetAngle - Angle;    //nTargetSpeed是目标速度
-//  fP = fDelta * speed_angle_PID.P;  
-//  fI = fDelta * speed_angle_PID.I;
+//  fDelta = Angle - nTargetAngle;    //nTargetSpeed是目标速度
+//  fP = fDelta * PID->P;  
+//  fI = fDelta * PID->I;
+//	
+//	PID->Deriv = fDelta - PID->PreError;
+//	PID->PreError = fDelta;
 //  
 //  g_fSpeedControlIntegral += fI;
-//	if(g_fSpeedControlIntegral > speed_angle_PID.iLimit) 
+//	//printf("SpeedPIControl = %f\n",g_fSpeedControlIntegral);
+//	if(g_fSpeedControlIntegral > 60) 
 //	{
-//		g_fSpeedControlIntegral = speed_angle_PID.iLimit;
+//		g_fSpeedControlIntegral = 60;
 //	}
-//	if(g_fSpeedControlIntegral < -speed_angle_PID.iLimit) 
+//	if(g_fSpeedControlIntegral < -60) 
 //	{
-//		g_fSpeedControlIntegral = -speed_angle_PID.iLimit;
+//		g_fSpeedControlIntegral = -60;
 //	}
-//  
-//  output =  g_fSpeedControlIntegral + fP;
-//  
-
+//	//printf("SpeedPIControl = %f\n",g_fSpeedControlIntegral);
+//  //output =  g_fSpeedControlIntegral;
+//  output =  g_fSpeedControlIntegral + fP + PID->D * PID->Deriv;
 //  return output;
 //}
 
-//void CtrlAttiSpeed(void)
-//{
-//	g_Speed = SpeedPIControl(imu.pitch, TargetAngle);
-//}
+
+//速度控制
+float SpeedPIControl(float inputAngle, float nTargetAngle, PID_Typedef * PID,float dt)
+{
+  float fDelta;
+  float fP, fI;
+  float output;
+  
+  g_fCarSpeed += (inputAngle - nTargetAngle) / dt;
+	g_fCarSpeed = limitValue(g_fCarSpeed,-100,100);
+  	printf("g_fCarSpeed = %f\n",g_fCarSpeed);
+  //g_fCarSpeed *= CAR_SPEED_CONSTANT;  //折算成有现实意义的速度
+  
+  fDelta = (g_fCarSpeed - 0);    //nTargetSpeed是目标速度
+  fP = fDelta * PID->P;  
+  fI = fDelta * PID->I;
+  
+  g_fSpeedControlIntegral += fI;
+
+  g_fSpeedControlIntegral = limitValue(g_fSpeedControlIntegral,-255,255);
+	
+	fP = limitValue(fP,-255,255);
+	
+  output =  g_fSpeedControlIntegral + fP;
+	
+	output = limitValue(output,-255,255);	
+  
+  return output;
+}
+
+void CtrlAttiSpeed(void)
+{
+	float output;
+	static uint32_t tPrev=0; 
+
+	float dt=0,t=0;
+	t=getSystemTime();
+	dt=(tPrev>0)?(t-tPrev):0;
+	tPrev=t;
+	
+	if(handup_ready)
+	{
+		output = SpeedPIControl(imu.pitch, TargetAngle, &pitch_rate_PID,dt);
+		Pitch += output;
+		printf("SpeedPIControl = %f\n",output);
+	}
+	else
+	{
+		g_fSpeedControlIntegral = 0;
+		g_fSpeedControl = 0;
+		g_fCarSpeed = 0;
+	}
+	
+}
 
 
 
@@ -197,7 +274,7 @@ void MotorPower(int16_t leftSpeed, int16_t rightSpeed)
 void CtrlMotor(void)
 {
 	int16_t leftSpeed,rightSpeed;
-
+	
 	if(CarMode == HAND_STAND)
 	{
 		if(Pitch > 0)
@@ -237,9 +314,8 @@ void SetTargetAngle()
 {
 	float value;
 	
-	//value = GetIntValue();
 	value = GetPIDfloat();
-	TargetAngle = value;
+	DEFAULT_ANGLE = TargetAngle = value;
 	
 }
 
@@ -319,13 +395,13 @@ void DoActionLoop(uint8_t CarMode)	//单位：ms
 			TurnRound = 0;
 			TargetAngle = DEFAULT_ANGLE;
 			
-			//小车的俯仰角进入目标区间，直立算法可以做积分
+			//小车的俯仰角进入目标区间，直立算法做积分
 			if((imu.pitch >= (TargetAngle-10)) && (imu.pitch <= (TargetAngle+10)) )
 			{
 				handup_ready = true;
 				//printf("handup_ready = true \n");
 			}
-			else if((imu.pitch >= 160) || (imu.pitch <= 0))
+			else if((imu.pitch >= 180) || (imu.pitch <= 0))
 			{
 				handup_ready = false;
 				//printf("handup_ready = false \n");

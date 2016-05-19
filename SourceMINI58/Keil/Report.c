@@ -18,7 +18,7 @@ void report_angle_pid(void)
 	GetYawAnglePID(&PID[6]);
 
 	{
-		printf("@AnglePID:%1.1f,%1.1f,%1.1f;  %1.1f,%1.1f,%1.1f; %1.1f,%1.1f,%1.1f\n",
+		printf("@AnglePID:%1.3f,%1.3f,%1.3f;  %1.3f,%1.3f,%1.3f; %1.3f,%1.3f,%1.3f\n",
 			PID[0],PID[1],PID[2],PID[3],PID[4],PID[5],PID[6],PID[7],PID[8]);
 	}
 }
@@ -47,8 +47,8 @@ void report_euler(void)
 
 void report_sensor_raw(void)
 {
-	printf("%d,%d,%d,%d,%d,%d\n", (int)imu.accRaw[0], (int)imu.accRaw[1], (int)imu.accRaw[2],
-		(int)imu.gyroRaw[0], (int)imu.gyroRaw[1], (int)imu.gyroRaw[2]);
+	printf("%d,%d,%d,%d,%d,%d\n", (int)imu.accb[0], (int)imu.accb[1], (int)imu.accb[2],
+		(int)imu.gyro[0], (int)imu.gyro[1], (int)imu.gyro[2]);
 }
 
 void ReportMessage(void)

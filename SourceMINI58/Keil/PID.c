@@ -3,7 +3,7 @@
 #include "UartCtrl.h"
 #include "stdlib.h"
 #include "control.h"
-
+#include "stdio.h"
 
 void GetRollAnglePID(float* pid)
 {
@@ -54,7 +54,7 @@ void PID_Postion_Cal(PID_Typedef * PID,float target,float measure,int32_t dertT)
  float dt= dertT/1000.0;
 	//-----------位置式PID-----------
 	//误差=期望值-测量值
-	PID->Error=target-measure;
+	PID->Error= measure - target;
 	
 	PID->Deriv= (PID->Error-PID->PreError)/dt;
 	
@@ -68,13 +68,20 @@ void PID_Postion_Cal(PID_Typedef * PID,float target,float measure,int32_t dertT)
 	{
 			{
 				termI=(PID->Integ) + (PID->Error) * dt;     //积分环节
-				if(termI > - PID->iLimit && termI < PID->iLimit && PID->Output > - PID->iLimit && PID->Output < PID->iLimit)       //在-30~30时才进行积分环节
-					PID->Integ=termI;
+				PID->Integ+=termI;
+				printf("PID->Integ = %f\n",PID->Integ);
+				if(termI < - PID->iLimit || termI > PID->iLimit)
+				{
+					PID->Integ= PID->iLimit;
+					//printf("PID->Integ = %f\n",PID->Integ);
+				}
+				
 			}
 	}
 	else
 	{
 			PID->Integ= 0;
+			printf("handup_ready is not\n");
 	}
 }
 

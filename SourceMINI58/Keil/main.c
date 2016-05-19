@@ -172,6 +172,7 @@ void loop()
 			{
 				//平衡站立
 				CtrlAttiAng();
+				//CtrlAttiSpeed();
 				//平衡下控制电机
 				CtrlMotor();
 				
