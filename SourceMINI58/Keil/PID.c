@@ -7,9 +7,9 @@
 
 void GetRollAnglePID(float* pid)
 {
-	pid[0] = speed_angle_PID.P;
-	pid[1] = speed_angle_PID.I;
-	pid[2] = speed_angle_PID.D;
+	pid[0] = roll_angle_PID.P;
+	pid[1] = roll_angle_PID.I;
+	pid[2] = roll_angle_PID.D;
 }
 
 void GetYawAnglePID(float* pid)
@@ -107,11 +107,11 @@ void pidSetPID(PID_Typedef* pid, float kp, float ki, float kd)
 void controllerSetRollPID(float kp, float ki, float kd)
 {
 	if(kp>=0)
-		pidSetPID(&speed_angle_PID, kp, speed_angle_PID.I, speed_angle_PID.D);
+		pidSetPID(&roll_angle_PID, kp, roll_angle_PID.I, roll_angle_PID.D);
 	if(ki>=0)
-		pidSetPID(&speed_angle_PID, speed_angle_PID.P, ki, speed_angle_PID.D);
+		pidSetPID(&roll_angle_PID, roll_angle_PID.P, ki, roll_angle_PID.D);
 	if(kd>=0)
-		pidSetPID(&speed_angle_PID, speed_angle_PID.P, speed_angle_PID.I, kd);
+		pidSetPID(&roll_angle_PID, roll_angle_PID.P, roll_angle_PID.I, kd);
 }
 void controllerSetPitchPID(float kp, float ki, float kd)
 {

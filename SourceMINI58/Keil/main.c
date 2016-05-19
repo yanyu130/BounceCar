@@ -134,6 +134,9 @@ void setup()
 	
 	//初始化弹跳功能
 	Jump_Init();
+	
+	//MotorPwmOutput(18,0,0,0);
+	//while(1);
 }
 
 void loop()

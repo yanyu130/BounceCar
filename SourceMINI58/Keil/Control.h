@@ -25,10 +25,10 @@
 
 //占空比
 #define BASIC_SPEED0	0
-#define BASIC_SPEED1	15
-#define BASIC_SPEED2	20
-#define BASIC_SPEED3	25
-#define BASIC_SPEED4	30
+#define BASIC_SPEED1	20
+#define BASIC_SPEED2	25
+#define BASIC_SPEED3	30
+#define BASIC_SPEED4	35
 
 typedef struct _action
 {
@@ -56,7 +56,7 @@ extern uint8_t Action;
 extern PID_Typedef pitch_angle_PID;	  //pitch角度环PID
 extern PID_Typedef pitch_rate_PID;		//pitch角速率环PID
 
-extern PID_Typedef speed_angle_PID;    //speed角度环PID
+extern PID_Typedef roll_angle_PID;    //speed角度环PID
 extern PID_Typedef roll_rate_PID;     //roll角速率环PID
 
 extern PID_Typedef yaw_angle_PID;     //yaw角度环PID
@@ -72,6 +72,7 @@ void SetTargetAngle(void);
 //void SetNormalMode(void);
 void SetActionUsingTime(uint8_t action,int32_t time,int8_t speed);
 void SetActionUsingAngle(uint8_t action,float angle,int8_t speed);
+void CtrlStraightLineAng(float TargetYawAngle);
 //void DoActionUsingTime(void);	//time(ms)
 void DoActionLoop(uint8_t CarMode);
 void ActionHandle2(uint8_t action, int8_t speed);

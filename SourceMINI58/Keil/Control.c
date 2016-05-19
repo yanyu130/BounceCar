@@ -10,14 +10,15 @@
 PID_Typedef pitch_angle_PID;	//pitch角度环的PID
 PID_Typedef pitch_rate_PID;		//pitch角速率环的PID
 
-PID_Typedef speed_angle_PID;   //speed角度环的PID
+PID_Typedef roll_angle_PID;   //speed角度环的PID
 PID_Typedef roll_rate_PID;    //roll角速率环的PID
 
 PID_Typedef yaw_angle_PID;    //yaw角度环的PID 
 PID_Typedef yaw_rate_PID;     //yaw角速率环的PID
 
-float DEFAULT_ANGLE   = 63.5;
-float TargetAngle = 63.5;// = DEFAULT_ANGLE;
+float DEFAULT_PITCH_ANGLE   = 63.5;
+float TargetPitchAngle = 63.5;// = DEFAULT_ANGLE;
+float TargetYawAngle = 0;
 
 float fStabilityPError;
 float fStabilityDError;
@@ -80,7 +81,7 @@ float stabilityPDControl(float inputAngle, float setAnglePoint, float inputAngle
   return(output);
 }
 //控制平衡站立PID算法
-float stabilityPIDControl(float ActualAngle, float TargetAngle, PID_Typedef * PID)
+float PIDControl(float ActualAngle, float TargetAngle, PID_Typedef * PID)
 {
   float error;
   float output;
@@ -96,7 +97,7 @@ void CtrlAttiAng(void)
 { 
 		//Pitch = stabilityPDControl(imu.pitch, TargetAngle, -imu.gyro[PITCH],0,
 		//								&pitch_angle_PID);
-	Pitch = -stabilityPIDControl(imu.pitch, TargetAngle,&pitch_angle_PID);
+	Pitch = -PIDControl(imu.pitch, TargetPitchAngle,&pitch_angle_PID);
 		
 //	static uint32_t tPrev=0; 
 
@@ -108,6 +109,13 @@ void CtrlAttiAng(void)
 //	PID_Postion_Cal(&pitch_angle_PID,TargetAngle,imu.pitch,dt);	
 //	Pitch = pitch_angle_PID.Output;
 }
+
+void CtrlStraightLineAng(float TargetAngle)
+{ 
+	Yaw = -PIDControl(imu.yaw, TargetAngle,&yaw_angle_PID);
+	printf("TargetAngle = %d\n",(int)TargetAngle);
+}
+
 
 //速度控制函数
 //float SpeedPIControl(float Angle, float nTargetAngle, PID_Typedef * PID)
@@ -182,7 +190,7 @@ void CtrlAttiSpeed(void)
 	
 	if(handup_ready)
 	{
-		output = SpeedPIControl(imu.pitch, TargetAngle, &pitch_rate_PID,dt);
+		output = SpeedPIControl(imu.pitch, TargetPitchAngle, &pitch_rate_PID,dt);
 		Pitch += output;
 		printf("SpeedPIControl = %f\n",output);
 	}
@@ -315,7 +323,7 @@ void SetTargetAngle()
 	float value;
 	
 	value = GetPIDfloat();
-	DEFAULT_ANGLE = TargetAngle = value;
+	DEFAULT_PITCH_ANGLE = TargetPitchAngle = value;
 	
 }
 
@@ -341,14 +349,21 @@ void SetActionUsingAngle(uint8_t action,float angle,int8_t speed)
 	currentAction.actionType = action;
 	currentAction.speed = speed;
 	currentAction.targetAngle = angle;
+//	if(currentAction.actionType == ACTION_FORWARD || 
+//			currentAction.actionType == ACTION_BACKWARD)
+//	{
+//		TargetYawAngle = angle;
+//	}
+		
 }
 
 void DoActionLoop(uint8_t CarMode)	//单位：ms
 {
+	int8_t leftSpeed = 0, rightSpeed = 0;
 	//有动作时
 	if(getSystemTime() <= currentAction.stopTime)	//时间结束时
 	{
-		if(CarMode == HAND_STAND)
+		if(CarMode == HAND_STAND)	//倒立模式下
 		{
 			ActionHandle2(currentAction.actionType, currentAction.speed);
 		}
@@ -388,15 +403,38 @@ void DoActionLoop(uint8_t CarMode)	//单位：ms
 		}
 		
 	}
+	else if(currentAction.actionType ==  ACTION_FORWARD)	//直线走
+	{	
+		if(currentAction.speed != BASIC_SPEED0)
+		{
+			CtrlStraightLineAng(currentAction.targetAngle);
+			leftSpeed = currentAction.speed - Yaw;
+			rightSpeed = currentAction.speed + Yaw;
+			//printf("YAW = %d\n",(int)Yaw);
+			MotorPower(leftSpeed, rightSpeed);
+		}
+	}
+	else if(currentAction.actionType ==  ACTION_BACKWARD)	//直线走
+	{	
+		if(currentAction.speed != BASIC_SPEED0)
+		{
+			CtrlStraightLineAng(currentAction.targetAngle);
+			leftSpeed = currentAction.speed - Yaw;
+			rightSpeed = currentAction.speed + Yaw;
+			//printf("YAW = %d\n",(int)Yaw);
+			MotorPower(leftSpeed, rightSpeed);
+			
+		}
+	}
 	else	//无动作时
 	{	
 		if(CarMode == HAND_STAND)
 		{
 			TurnRound = 0;
-			TargetAngle = DEFAULT_ANGLE;
+			TargetPitchAngle = DEFAULT_PITCH_ANGLE;
 			
 			//小车的俯仰角进入目标区间，直立算法做积分
-			if((imu.pitch >= (TargetAngle-10)) && (imu.pitch <= (TargetAngle+10)) )
+			if((imu.pitch >= (TargetPitchAngle-10)) && (imu.pitch <= (TargetPitchAngle+10)) )
 			{
 				handup_ready = true;
 				//printf("handup_ready = true \n");
@@ -410,7 +448,10 @@ void DoActionLoop(uint8_t CarMode)	//单位：ms
 		else
 		{
 			handup_ready = false;
+			
 			MotorPower(BasicSpeed, BasicSpeed);
+			
+			
 			//MotorPwmOutput(0,0,0,0);
 			//currentAction.actionType = ACTION_NONE;
 		}

@@ -29,6 +29,7 @@ void RC_Update(void)
 	Comm_Process();
 }
 
+uint8_t currentCommand3 = 0;
 //遥控命令监测
 void RC_CommandDetect(void)
 {
@@ -139,42 +140,54 @@ void RC_CommandDetect(void)
 		{
 			command2_reset = true;
 		}
-		
-		if(command3 == 0x00)
+		if(currentCommand3 != command3)
 		{
-			SetBasicSpeed(BASIC_SPEED0);
-		}
-		else if(command3 == 0x01)
-		{
-			SetBasicSpeed(-BASIC_SPEED1);
-		}
-		else if(command3 == 0x02)
-		{
-			SetBasicSpeed(-BASIC_SPEED2);
-		}
-		else if(command3 == 0x03)
-		{
-			SetBasicSpeed(-BASIC_SPEED3);
-		}
-		else if(command3 == 0x04)
-		{
-			SetBasicSpeed(-BASIC_SPEED4);
-		}
-		else if(command3 == 0x10)
-		{
-			SetBasicSpeed(BASIC_SPEED1);
-		}
-		else if(command3 == 0x20)
-		{
-			SetBasicSpeed(BASIC_SPEED2);
-		}
-		else if(command3 == 0x30)
-		{
-			SetBasicSpeed(BASIC_SPEED3);
-		}
-		else if(command3 == 0x40)
-		{
-			SetBasicSpeed(BASIC_SPEED4);
+			currentCommand3 = command3;
+			if(command3 == 0x00)
+			{
+				SetActionUsingAngle(ACTION_NONE,imu.yaw,BASIC_SPEED0);
+				//SetBasicSpeed(BASIC_SPEED0);
+			}
+			else if(command3 == 0x01)
+			{
+				SetActionUsingAngle(ACTION_BACKWARD,imu.yaw,-BASIC_SPEED1);
+				//SetBasicSpeed(-BASIC_SPEED1);
+			}
+			else if(command3 == 0x02)
+			{
+				//SetBasicSpeed(-BASIC_SPEED2);
+				SetActionUsingAngle(ACTION_BACKWARD,imu.yaw,-BASIC_SPEED2);
+			}
+			else if(command3 == 0x03)
+			{
+				//SetBasicSpeed(-BASIC_SPEED3);
+				SetActionUsingAngle(ACTION_BACKWARD,imu.yaw,-BASIC_SPEED3);
+			}
+			else if(command3 == 0x04)
+			{
+				//SetBasicSpeed(-BASIC_SPEED4);
+				SetActionUsingAngle(ACTION_BACKWARD,imu.yaw,-BASIC_SPEED4);
+			}
+			else if(command3 == 0x10)
+			{
+				//SetBasicSpeed(BASIC_SPEED1);
+				SetActionUsingAngle(ACTION_FORWARD,imu.yaw,BASIC_SPEED1);
+			}
+			else if(command3 == 0x20)
+			{
+				//SetBasicSpeed(BASIC_SPEED2);
+				SetActionUsingAngle(ACTION_FORWARD,imu.yaw,BASIC_SPEED2);
+			}
+			else if(command3 == 0x30)
+			{
+				//SetBasicSpeed(BASIC_SPEED3);
+				SetActionUsingAngle(ACTION_FORWARD,imu.yaw,BASIC_SPEED3);
+			}
+			else if(command3 == 0x40)
+			{
+				//SetBasicSpeed(BASIC_SPEED4);
+				SetActionUsingAngle(ACTION_FORWARD,imu.yaw,BASIC_SPEED4);
+			}
 		}
 		
 	}

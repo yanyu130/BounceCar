@@ -330,6 +330,12 @@ void IMUSO3Thread(void)
 			imu.pitch = 360+imu.pitch;
 		}
 		imu.roll = -euler[0]  * 57.295780;	// * 180.0f / M_PI_F;
+		
+		//为适应功能，对YAW做特殊处理。YAW范围是0 + 360
 		imu.yaw = -euler[2] * 57.295780;		// * 180.0f / M_PI_F;
+		if(imu.yaw < 0)
+		{
+			imu.yaw = imu.yaw+360;
+		}
 
 } 

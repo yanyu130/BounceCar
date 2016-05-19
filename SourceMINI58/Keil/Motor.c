@@ -2,6 +2,9 @@
 #include "def.h"
 #include "Timer_Ctrl.h"
 #include "control.h"
+#include "math.h"
+
+#define MOTOR_DEAD_ZONE 15
 
 //飞机正方向，左下角为电机1，逆时钟以此类推，电机2，电机3，电机4
 #define MOTOR_1 5
@@ -52,26 +55,23 @@ void MotorPwmOutput(int16_t MOTO1_PWM,int16_t MOTO2_PWM,int16_t MOTO3_PWM,int16_
 	if(MOTO3_PWM < 0)	MOTO3_PWM = 0;
 	if(MOTO4_PWM < 0)	MOTO4_PWM = 0;
 	
-//	if(MOTO1_PWM == 0)
-//	{
-//		PWM_DisableOutput(PWM, 0x10);
-//		PWM_Stop(PWM, 0x10);
-//	}
-//	if(MOTO2_PWM == 0)
-//	{
-//		PWM_DisableOutput(PWM, 0x20);
-//		PWM_Stop(PWM, 0x20);
-//	}
-//	if(MOTO3_PWM == 0)
-//	{
-//		PWM_DisableOutput(PWM, 0x01);
-//		PWM_Stop(PWM, 0x01);
-//	}
-//	if(MOTO4_PWM == 0)
-//	{
-//		PWM_DisableOutput(PWM, 0x02);
-//		PWM_Stop(PWM, 0x02);
-//	}
+	//低于MOTOR_DEAD_ZONE
+	if(MOTO1_PWM <= MOTOR_DEAD_ZONE)
+	{
+		MOTO1_PWM =0;
+	}
+	if(MOTO2_PWM <= MOTOR_DEAD_ZONE)
+	{
+		MOTO2_PWM =0;
+	}
+	if(MOTO3_PWM <= MOTOR_DEAD_ZONE)
+	{
+		MOTO3_PWM =0;
+	}
+	if(MOTO4_PWM <= MOTOR_DEAD_ZONE)
+	{
+		MOTO4_PWM =0;
+	}
 	
 	PWM_ConfigOutputChannel(PWM, MOTOR_1, 100, MOTO1_PWM);
 	PWM_ConfigOutputChannel(PWM, MOTOR_2, 100, MOTO2_PWM);
