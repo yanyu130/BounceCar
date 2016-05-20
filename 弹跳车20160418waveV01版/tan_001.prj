@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project version="1.10" product="Q-Speech" productMajor="3" productMinor="31" productNyBuild="090815" productRevision="00">
+  <InformationGroup>
+    <Information name="IcName" text="NY3P016B" />
+    <Information name="Series" text="NY3CB" />
+    <Information name="Client" text="tan" />
+    <Information name="ProjectNumber" text="tan" />
+    <Information name="ProjectName" text="tan" />
+    <Information name="Description" text="" />
+    <Information name="ProjectDir" text="d:\Documents\Desktop\code\弹跳车\NY3\弹跳车20160418waveV01版" />
+  </InformationGroup>
+  <SettingGroup>
+    <Setting>
+      <Option name="VDD" text="V30" />
+      <Option name="PlaySpeed" text="F4300" />
+      <Option name="PowerOnPlay" text="Disabled" />
+      <Option name="PowerOnLoop" text="Disabled" />
+      <Option name="InternalFeedback" text="None" />
+      <Option name="ToggleOnOff" text="Disabled" />
+      <Option name="POPInterupt" text="Disabled" />
+      <Option name="LVR" text="Enabled" />
+      <Option name="PWM" text="Normal" />
+      <Option name="AntiNoise" text="Disabled" />
+      <Option name="POPInterupt_2nd" text="Disabled" />
+    </Setting>
+    <Pin name="OKY1">
+      <Option name="IO" text="Input" />
+      <Option name="InputType" text="CDS_M15" />
+      <Option name="EL" text="Level" />
+      <Option name="UH" text="Unhold" />
+      <Option name="RI" text="Retrigger" />
+      <Option name="Debounce" text="Short" />
+      <Option name="TriggerFunction" text="Sequential" />
+      <Option name="Range" text="9" />
+      <Option name="Range_2nd" text="-1" />
+      <Option name="OutputType" text="Stop_HighPulse" />
+      <Option name="Reset" text="ON" />
+      <Option name="SinkCurrent" text="Normal" />
+      <Option name="EL_2nd" text="Edge" />
+      <Option name="UH_2nd" text="Unhold" />
+      <Option name="RI_2nd" text="Retrigger" />
+    </Pin>
+    <Pin name="IO1">
+      <Option name="IO" text="Input" />
+      <Option name="InputType" text="CDS_M15" />
+      <Option name="EL" text="Level" />
+      <Option name="UH" text="Unhold" />
+      <Option name="RI" text="Retrigger" />
+      <Option name="Debounce" text="Short" />
+      <Option name="TriggerFunction" text="Sequential" />
+      <Option name="Range" text="0" />
+      <Option name="Range_2nd" text="-1" />
+      <Option name="OutputType" text="Stop_HighPulse" />
+      <Option name="Reset" text="OFF" />
+      <Option name="SinkCurrent" text="Normal" />
+      <Option name="EL_2nd" text="Edge" />
+      <Option name="UH_2nd" text="Unhold" />
+      <Option name="RI_2nd" text="Retrigger" />
+    </Pin>
+    <Pin name="IO2">
+      <Option name="IO" text="Output" />
+      <Option name="InputType" text="CDS_M15" />
+      <Option name="EL" text="Edge" />
+      <Option name="UH" text="Unhold" />
+      <Option name="RI" text="Retrigger" />
+      <Option name="Debounce" text="Long" />
+      <Option name="TriggerFunction" text="Sequential" />
+      <Option name="Range" text="1" />
+      <Option name="Range_2nd" text="-1" />
+      <Option name="OutputType" text="Busy_LowActive" />
+      <Option name="Reset" text="ON" />
+      <Option name="SinkCurrent" text="Normal" />
+      <Option name="EL_2nd" text="Edge" />
+      <Option name="UH_2nd" text="Unhold" />
+      <Option name="RI_2nd" text="Retrigger" />
+    </Pin>
+  </SettingGroup>
+  <SectionGroup>
+    <Section name="Voice">
+      <Node songFile="d:\Documents\Desktop\code\弹跳车\NY3\弹跳车20160418waveV01版\音效1.wav" mute="0" factor="F6" ageStamp="635965948108710674" playspeed="F6000" />
+      <Node songFile="d:\Documents\Desktop\code\弹跳车\NY3\弹跳车20160418waveV01版\音效2.wav" mute="0" factor="F6" ageStamp="635965946023770920" playspeed="F6000" />
+      <Node songFile="d:\Documents\Desktop\code\弹跳车\NY3\弹跳车20160418waveV01版\音效3.wav" mute="0" factor="F6" ageStamp="635965945706315608" playspeed="F6000" />
+      <Node songFile="d:\Documents\Desktop\code\弹跳车\NY3\弹跳车20160418waveV01版\音效4.wav" mute="0" factor="F6" ageStamp="635965945262359233" playspeed="F6000" />
+      <Node songFile="d:\Documents\Desktop\code\弹跳车\NY3\弹跳车20160418waveV01版\音效5.wav" mute="0" factor="F6" ageStamp="635965943855555592" playspeed="F6000" />
+      <Node songFile="d:\Documents\Desktop\code\弹跳车\NY3\弹跳车20160418waveV01版\音效6.wav" mute="0" factor="F6" ageStamp="635965943266210754" playspeed="F6000" />
+      <Node songFile="d:\Documents\Desktop\code\弹跳车\NY3\弹跳车20160418waveV01版\音效7.wav" mute="0" factor="F6" ageStamp="635965942593660351" playspeed="F6000" />
+      <Node songFile="d:\Documents\Desktop\code\弹跳车\NY3\弹跳车20160418waveV01版\音效8.wav" mute="0" factor="F6" ageStamp="635965941509057624" playspeed="F6000" />
+      <Node songFile="d:\Documents\Desktop\code\弹跳车\NY3\弹跳车20160418waveV01版\音效9.wav" mute="0" factor="F6" ageStamp="635965946729960595" playspeed="F6000" />
+    </Section>
+    <Section name="Mute">
+      <Node mute="128" playspeed="F24000" />
+    </Section>
+  </SectionGroup>
+  <PinGroup>
+    <Option name="PopSentence" text="1" />
+    <Option name="PopSentence_2nd" text="-1" />
+    <SentencePin name="OKY1">
+      <SentenceGroup>
+        <Sentence name="0">
+          <Step sectionname="M000" oky1="None" io1="None" io2="None" playspeed="F24000" />
+        </Sentence>
+        <Sentence name="1">
+          <Step sectionname="V000" oky1="None" io1="None" io2="None" playspeed="F6000" />
+        </Sentence>
+        <Sentence name="2">
+          <Step sectionname="V001" oky1="None" io1="None" io2="None" playspeed="F6000" />
+        </Sentence>
+        <Sentence name="3">
+          <Step sectionname="V002" oky1="None" io1="None" io2="None" playspeed="F6000" />
+        </Sentence>
+        <Sentence name="4">
+          <Step sectionname="V003" oky1="None" io1="None" io2="None" playspeed="F6000" />
+        </Sentence>
+        <Sentence name="5">
+          <Step sectionname="V004" oky1="None" io1="None" io2="None" playspeed="F6000" />
+        </Sentence>
+        <Sentence name="6">
+          <Step sectionname="V005" oky1="None" io1="None" io2="None" playspeed="F6000" />
+        </Sentence>
+        <Sentence name="7">
+          <Step sectionname="V006" oky1="None" io1="None" io2="None" playspeed="F6000" />
+        </Sentence>
+        <Sentence name="8">
+          <Step sectionname="V007" oky1="None" io1="None" io2="None" playspeed="F6000" />
+        </Sentence>
+        <Sentence name="9">
+          <Step sectionname="V008" oky1="None" io1="None" io2="None" playspeed="F6000" />
+        </Sentence>
+      </SentenceGroup>
+    </SentencePin>
+  </PinGroup>
+</Project>
