@@ -130,6 +130,7 @@ void RC_CommandDetect(void)
 				{
 					CarMode = HAND_STAND;
 					printf("HAND_STAND\n");
+					SetActionUsingAngle(ACTION_NONE,imu.yaw,0);
 				}
 				command2_reset = false;
 			}

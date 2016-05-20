@@ -62,11 +62,12 @@ extern PID_Typedef roll_rate_PID;     //roll角速率环PID
 extern PID_Typedef yaw_angle_PID;     //yaw角度环PID
 extern PID_Typedef yaw_rate_PID;      //yaw角速率环PID  
 
-void ActionHandle(uint8_t action,int8_t speed);
+
 
 void CtrlAttiAng(void);
 void CtrlAttiRate(void); 
 void CtrlMotor(void);
+void CtrlMotor2(int16_t leftSpeed,int16_t rightSpeed);
 void SetTargetAngle(void);
 //void SetHandstandMode(void);
 //void SetNormalMode(void);
@@ -75,8 +76,13 @@ void SetActionUsingAngle(uint8_t action,float angle,int8_t speed);
 void CtrlStraightLineAng(float TargetYawAngle);
 //void DoActionUsingTime(void);	//time(ms)
 void DoActionLoop(uint8_t CarMode);
-void ActionHandle2(uint8_t action, int8_t speed);
+
+//动作执行
+void HandUpMode_ActionHandle(uint8_t action, int8_t speed);
+void NormalMode_ActionHandle(uint8_t action,int8_t speed);
+
 void MotorPower(int16_t leftSpeed, int16_t rightSpeed);
+
 void SetBasicSpeed(int8_t Speed);
 void CtrlAttiSpeed(void);
 float limitValue(float value,float min, float max);

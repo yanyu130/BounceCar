@@ -176,11 +176,12 @@ void loop()
 				//平衡站立
 				CtrlAttiAng();
 				//CtrlAttiSpeed();
-				//平衡下控制电机
-				CtrlMotor();
 				
 				//处理动作
 				DoActionLoop(HAND_STAND);
+				
+				//平衡下控制电机
+				CtrlMotor();
 			}
 			else
 			{

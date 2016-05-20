@@ -16,8 +16,8 @@ PID_Typedef roll_rate_PID;    //roll角速率环的PID
 PID_Typedef yaw_angle_PID;    //yaw角度环的PID 
 PID_Typedef yaw_rate_PID;     //yaw角速率环的PID
 
-float DEFAULT_PITCH_ANGLE   = 63.5;
-float TargetPitchAngle = 63.5;// = DEFAULT_ANGLE;
+float DEFAULT_PITCH_ANGLE   = 60;
+float TargetPitchAngle = 60;// = DEFAULT_ANGLE;
 float TargetYawAngle = 0;
 
 float fStabilityPError;
@@ -295,9 +295,37 @@ void CtrlMotor(void)
 			leftSpeed = Pitch - DeadZone;
 			rightSpeed = Pitch - DeadZone; 
 		}
+		
+		leftSpeed =  leftSpeed - Yaw;
+		rightSpeed = rightSpeed + Yaw;
+		
 		//转弯控制
 		leftSpeed -=   TurnRound;
 		rightSpeed +=   TurnRound;
+		
+		MotorPower(leftSpeed, rightSpeed);
+	}
+	
+}
+
+void CtrlMotor2(int16_t leftSpeed,int16_t rightSpeed)
+{
+	
+	if(CarMode == HAND_STAND)
+	{
+		if(Pitch > 0)
+		{
+			leftSpeed = Pitch + DeadZone ;
+			rightSpeed = Pitch + DeadZone;
+		}
+		else
+		{
+			leftSpeed = Pitch - DeadZone;
+			rightSpeed = Pitch - DeadZone; 
+		}
+		//转弯控制
+		leftSpeed -=   TurnRound - Yaw;
+		rightSpeed +=   TurnRound + Yaw;
 		
 		MotorPower(leftSpeed, rightSpeed);
 	}
@@ -348,28 +376,22 @@ void SetActionUsingAngle(uint8_t action,float angle,int8_t speed)
 {
 	currentAction.actionType = action;
 	currentAction.speed = speed;
-	currentAction.targetAngle = angle;
-//	if(currentAction.actionType == ACTION_FORWARD || 
-//			currentAction.actionType == ACTION_BACKWARD)
-//	{
-//		TargetYawAngle = angle;
-//	}
-		
+	currentAction.targetAngle = angle;		
 }
 
 void DoActionLoop(uint8_t CarMode)	//单位：ms
 {
 	int8_t leftSpeed = 0, rightSpeed = 0;
 	//有动作时
-	if(getSystemTime() <= currentAction.stopTime)	//时间结束时
+	if(getSystemTime() <= currentAction.stopTime)	//按时间执行动作时
 	{
 		if(CarMode == HAND_STAND)	//倒立模式下
 		{
-			ActionHandle2(currentAction.actionType, currentAction.speed);
+			HandUpMode_ActionHandle(currentAction.actionType, currentAction.speed);
 		}
-		else
+		else		//普通模式下
 		{
-			ActionHandle(currentAction.actionType, currentAction.speed);
+			NormalMode_ActionHandle(currentAction.actionType, currentAction.speed);
 		}
 	}
 	else if(currentAction.actionType ==  ACTION_ROLL_180)	//翻滚180度
@@ -379,7 +401,7 @@ void DoActionLoop(uint8_t CarMode)	//单位：ms
 		{
 			if(imu.pitch < currentAction.targetAngle-30)	//未达到目标角度时，-30是惯性处理
 			{
-				ActionHandle(currentAction.actionType, currentAction.speed);
+				NormalMode_ActionHandle(currentAction.actionType, currentAction.speed);
 				//printf("pitch = %d\n",(int)imu.pitch);
 			}
 			else
@@ -392,7 +414,7 @@ void DoActionLoop(uint8_t CarMode)	//单位：ms
 		{
 			if(imu.pitch > currentAction.targetAngle+30)	//未达到目标角度时，+30是惯性处理
 			{
-				ActionHandle(currentAction.actionType, -currentAction.speed);
+				NormalMode_ActionHandle(currentAction.actionType, -currentAction.speed);
 				//printf("pitch = %d\n",(int)imu.pitch);
 			}
 			else
@@ -403,7 +425,8 @@ void DoActionLoop(uint8_t CarMode)	//单位：ms
 		}
 		
 	}
-	else if(currentAction.actionType ==  ACTION_FORWARD)	//直线走
+	else if(currentAction.actionType ==  ACTION_FORWARD ||
+					currentAction.actionType ==  ACTION_BACKWARD)					//直线走
 	{	
 		if(currentAction.speed != BASIC_SPEED0)
 		{
@@ -412,26 +435,19 @@ void DoActionLoop(uint8_t CarMode)	//单位：ms
 			rightSpeed = currentAction.speed + Yaw;
 			//printf("YAW = %d\n",(int)Yaw);
 			MotorPower(leftSpeed, rightSpeed);
-		}
-	}
-	else if(currentAction.actionType ==  ACTION_BACKWARD)	//直线走
-	{	
-		if(currentAction.speed != BASIC_SPEED0)
-		{
-			CtrlStraightLineAng(currentAction.targetAngle);
-			leftSpeed = currentAction.speed - Yaw;
-			rightSpeed = currentAction.speed + Yaw;
-			//printf("YAW = %d\n",(int)Yaw);
-			MotorPower(leftSpeed, rightSpeed);
-			
 		}
 	}
 	else	//无动作时
-	{	
+	{
 		if(CarMode == HAND_STAND)
 		{
 			TurnRound = 0;
 			TargetPitchAngle = DEFAULT_PITCH_ANGLE;
+			
+			//直线控制
+			CtrlStraightLineAng(currentAction.targetAngle);
+			//leftSpeed = currentAction.speed - Yaw;
+			//rightSpeed = currentAction.speed + Yaw;
 			
 			//小车的俯仰角进入目标区间，直立算法做积分
 			if((imu.pitch >= (TargetPitchAngle-10)) && (imu.pitch <= (TargetPitchAngle+10)) )
@@ -447,12 +463,9 @@ void DoActionLoop(uint8_t CarMode)	//单位：ms
 		}
 		else
 		{
-			handup_ready = false;
-			
-			MotorPower(BasicSpeed, BasicSpeed);
-			
-			
-			//MotorPwmOutput(0,0,0,0);
+			handup_ready = false;			
+			MotorPower(0, 0);
+
 			//currentAction.actionType = ACTION_NONE;
 		}
 	}
@@ -460,7 +473,7 @@ void DoActionLoop(uint8_t CarMode)	//单位：ms
 
 
 
-void ActionHandle2(uint8_t action,int8_t speed)
+void HandUpMode_ActionHandle(uint8_t action,int8_t speed)
 {
 	switch(action)
 	{
@@ -504,7 +517,7 @@ void ActionHandle2(uint8_t action,int8_t speed)
 	}
 }
 
-void ActionHandle(uint8_t action,int8_t speed)
+void NormalMode_ActionHandle(uint8_t action,int8_t speed)
 {
 	switch(action)
 	{
